@@ -1,7 +1,6 @@
 const BASE_URL = 'https://collectionapi.metmuseum.org/public/collection/v1'
 
 export async function search(term, start, resultsPerPage) {
-    console.log(term,start,resultsPerPage)
     let endpoint = `${BASE_URL}/search?hasImages=true&q=${term}`
     let response = await fetch(endpoint).then((res) => res.json());
     let arr = []

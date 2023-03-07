@@ -7,14 +7,14 @@ export default function Pagination({results, setResults}) {
     const totalPgs = Math.ceil(results.total / results.resultsPerPg)
 
     useEffect( () => {
-        const pageNumSet = [1]
+        const pageNumSet = []
         
         if (totalPgs <= 10) {
-            for (let i = 2; i <= totalPgs; i++) {
+            for (let i = 1; i <= totalPgs; i++) {
                 pageNumSet.push(i)
             }
         } else if (curPg <= 6) {
-            for (let i = 2; i <= 10; i++) {
+            for (let i = 1; i <= 10; i++) {
                 pageNumSet.push(i)
             }   
         } else if (curPg > 6 && ((curPg + 4) < totalPgs)) { 
@@ -27,7 +27,7 @@ export default function Pagination({results, setResults}) {
             }
         }
         setPageNums(pageNumSet)
-    }, []) 
+    }, [curPg, totalPgs]) 
 
     function handlePgChange(num) {
         const newCurPg = curPg + num
@@ -37,11 +37,19 @@ export default function Pagination({results, setResults}) {
         }
         setResults(newResults)
     }
+
+    function handleDirectPgChange(num) {
+        const newResults = {
+            ...results, 
+            curPg : num
+        }
+        setResults(newResults)
+    }
     
     return (
         <div>
             {results.curPg > 1 ? <button onClick={() => handlePgChange(-1)}>previous</button> : ''}
-            {pageNums.map( (num, idx) => <button key={idx}>{num}</button>)}
+            {pageNums.map( (num, idx) => <button key={idx} onClick={() => handleDirectPgChange(num)} >{num}</button>)}
             { totalPgs > pageNums[pageNums.length - 1] ?
                 <><span> ... </span> <button>{totalPgs}</button></>
                 : ''}
