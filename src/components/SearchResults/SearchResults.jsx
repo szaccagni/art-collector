@@ -1,11 +1,11 @@
 import './SearchResults.css'
 import SearchResultCard from '../SearchResultCard/SearchResultCard'
 
-export default function SearchReults({results, resultsFor}) {
+export default function SearchReults({results}) {
     return ( 
         <>
-            <div>showing results for <b>{resultsFor}</b></div>
-            <div className='SearchResults'>{results.map((result,idx) => <SearchResultCard kye={idx} result={result}/>)}</div>   
+            <div>showing results for <b>{results.curSearch}</b></div>
+            <div className='SearchResults'>{results.curData.map((result,idx) => <SearchResultCard key={idx} result={result}/>)}</div>   
         </>   
     )
 }

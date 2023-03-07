@@ -1,6 +1,7 @@
 const BASE_URL = 'https://collectionapi.metmuseum.org/public/collection/v1'
 
 export async function search(term, start, resultsPerPage) {
+    console.log(term,start,resultsPerPage)
     let endpoint = `${BASE_URL}/search?hasImages=true&q=${term}`
     let response = await fetch(endpoint).then((res) => res.json());
     let arr = []
@@ -10,7 +11,7 @@ export async function search(term, start, resultsPerPage) {
         if (details.primaryImage !== '') arr.push(details)
         count += 1
     } 
-    const result = {total: response.total, arr: arr}
+    const result = {total: response.total, curData: arr}
     return result
 }
 
