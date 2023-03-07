@@ -1,0 +1,7 @@
+.SearchResultCard {
+    border: 1px solid black;
+}
+
+.SearchResultCard img {
+    width: 80%;
+}

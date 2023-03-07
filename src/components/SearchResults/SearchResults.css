@@ -1,0 +1,7 @@
+.SearchResults {
+    display: grid;
+    grid-template-columns: repeat(3,30%);
+    grid-column-gap: 4vw;
+    grid-row-gap: 1vw;
+    justify-content: center;
+}
