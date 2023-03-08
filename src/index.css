@@ -1,0 +1,28 @@
+@font-face {
+    font-family: 'archivo-black';
+    src: URL('./fonts/Archivo-Black.otf') format('opentype');
+}
+
+@font-face {
+    font-family: 'proxima-nova-r';
+    src: URL('./fonts/Proxima-Nova-Regular.otf') format('opentype');
+}
+
+body { 
+    margin: 0;
+    background-color: #f9f9f9;
+}
+
+.NavBar {
+    display: flex;
+    justify-content: space-between;
+    font-family: proxima-nova-r;
+    color: #4a4a4a;
+    background-color: #FFFFFF;
+    height: 12vh;
+}
+.NavBar div {
+    display: flex;
+    align-items: center;
+    margin: 0 20px;
+}

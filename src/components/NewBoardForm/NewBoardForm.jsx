@@ -28,7 +28,7 @@ export default function NewBoardForm({user, addBoard}) {
         <>
             <input name="name" placeholder="name" value={formData.name} onChange={handleChange}></input>
             <input name="description" placeholder="description" value={formData.description} onChange={handleChange}></input>
-            <button onClick={handleClick}>save and add images!</button>
+            <button onClick={handleClick}>save</button>
         </>
     )
 }
