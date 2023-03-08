@@ -1,22 +1,31 @@
 const BASE_URL = 'https://collectionapi.metmuseum.org/public/collection/v1'
 
-export async function search(term, start, resultsPerPage) {
+export async function search(term) {
     let endpoint = `${BASE_URL}/search?hasImages=true&q=${term}`
     let response = await fetch(endpoint).then((res) => res.json());
-    let arr = []
-    let count = 0
-    while (arr.length < resultsPerPage) {
-        const details = await getObjDetails(response.objectIDs[start+count])
-        if (details.primaryImage !== '') arr.push(details)
-        count += 1
-    } 
-    const result = {total: response.total, curData: arr}
-    return result
+    return response.objectIDs
 }
 
-export async function getAllDetails(arr) {
-    const results = await Promise.all(arr.map(el => getObjDetails(el)))
-    return results
+export async function getArrDetails(objectIDs, curPg, resultsPerPg) {
+    const removeIds = []
+    const start = (curPg * resultsPerPg) - resultsPerPg
+    const results = []
+    let count = 0
+    while (results.length < resultsPerPg) {
+        const id = objectIDs[(start+count)]
+        const details = await getObjDetails(id)
+        if (details.primaryImage !== '') {
+            results.push(details)
+        } else {
+            removeIds.push(id)
+        }
+        count += 1
+    }
+    removeIds.forEach(el => {
+        const idx = objectIDs.indexOf(el)
+        objectIDs.splice(idx, 1)
+    })
+    return {results, objectIDs}
 }
 
 export async function getObjDetails(id) {

@@ -2,8 +2,9 @@ import './SearchResultCard.css'
 export default function SearchResultCard({result}) {
     return (
         <div className='SearchResultCard'>
+            <div>{result.objectID}</div>
             <div>{result.title}</div>
-            <img src={result.primaryImage}></img>
+            <img src={result.primaryImage} alt={result.title}></img>
         </div>
     )
 }
