@@ -1,4 +1,3 @@
 # ART Collector
 
-currently workshopping the name
-in dev
+currently workshopping name  in development
