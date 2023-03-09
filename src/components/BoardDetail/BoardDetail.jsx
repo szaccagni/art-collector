@@ -26,7 +26,9 @@ export default function BoardDetail({curBoard, showBoard}) {
                     <button onClick={() => setShowComponents('met')}>Collect from The Met</button>
                 </div>
                 <div className='board-imgs-container'>
-                    {curBoard.items.map((item, idx) => <div className='board-detail-img-container' key={idx}><img src={item.url}/></div>)}
+                    {curBoard.items.map((item, idx) => 
+                        <div className='board-detail-img-container' key={idx}><img src={item.url}/></div>
+                    )}
                 </div>
                 </>
                 : ''

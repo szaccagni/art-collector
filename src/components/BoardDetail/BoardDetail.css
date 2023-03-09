@@ -1,11 +1,7 @@
 .board-imgs-container {
-    display: grid;
-    grid-template-columns: repeat(4, 25%);
+    padding: 15px;
+    columns: 4 200px;
 }
-
-/* .board-detail-img-container {
-    position: absolute;
-} */
 
 .board-detail-img-container img {
     width: 100%;
