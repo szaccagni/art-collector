@@ -6,23 +6,30 @@ import * as boardAPI from '../../utilities/board-api'
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar'
 import SearchPage from '../SearchPage/SearchPage';
-import NewBoardForm from '../../components/NewBoardForm/NewBoardForm';
-import BoardsIndex from '../../components/BoardsIndex/BoardsIndex';
+import BoardPage from '../BoardPage/BoardPage';
 
 export default function App() {
   const [ user, setUser ] = useState(getUser())
+  const [ showBoardComponent, setShowBoardComponent ] = useState('index')
   const [ boards, setBoards ] = useState([])
+  const [ curBoard, setCurBoard ] = useState('')
 
   useEffect( function () {
-    async function getBoards() {
-      const userBoards = await boardAPI.getBoards()
-      setBoards(userBoards)
-    }
     getBoards()
   }, [user])
 
   async function addBoard(newBoard) {
-    await boardAPI.addBoard(newBoard)
+    const res = await boardAPI.addBoard(newBoard)
+    if (res) {
+      setShowBoardComponent('board deatil')
+      setCurBoard(res)
+    }
+    getBoards()
+  }
+
+  async function getBoards() {
+    const userBoards = await boardAPI.getBoards()
+    setBoards(userBoards)
   }
 
   return (
@@ -30,13 +37,11 @@ export default function App() {
       {
         user ?
         <>
-          <NavBar user={user} setUser={setUser} />
+          <NavBar user={user} setUser={setUser} setShowBoardComponent={setShowBoardComponent}/>
           <Routes>
-            <Route path="/boards/new" element={<NewBoardForm />}></Route>
-            <Route path="/boards/" element={<BoardsIndex boards={boards}/>}></Route>
+            <Route path="/boards/" element={<BoardPage user={user} addBoard={addBoard} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard}/>}></Route>
             <Route path="/*" element={<Navigate to="/boards" />}></Route>
           </Routes>
-          {/* <NewBoardForm user={user} addBoard={addBoard} /> */}
         </>
         :
         <AuthPage setUser={setUser} />

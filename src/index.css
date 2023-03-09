@@ -11,12 +11,12 @@
 body { 
     margin: 0;
     background-color: #f9f9f9;
+    font-family: proxima-nova-r;
 }
 
 .NavBar {
     display: flex;
     justify-content: space-between;
-    font-family: proxima-nova-r;
     color: #4a4a4a;
     background-color: #FFFFFF;
     height: 12vh;
