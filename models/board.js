@@ -12,7 +12,6 @@ const itemSchema = new Schema({
     },
     apiID : {
         type: Number,
-        required: true
     }
 }, {
     timestamps: true

@@ -5,7 +5,6 @@ import { getUser } from '../../utilities/users-service'
 import * as boardAPI from '../../utilities/board-api'
 import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar'
-import SearchPage from '../SearchPage/SearchPage';
 import BoardPage from '../BoardPage/BoardPage';
 
 export default function App() {
@@ -21,8 +20,7 @@ export default function App() {
   async function addBoard(newBoard) {
     const res = await boardAPI.addBoard(newBoard)
     if (res) {
-      setShowBoardComponent('board deatil')
-      setCurBoard(res)
+      showBoard(res)
     }
     getBoards()
   }
@@ -32,6 +30,11 @@ export default function App() {
     setBoards(userBoards)
   }
 
+  function showBoard(board) {
+    setCurBoard(board)
+    setShowBoardComponent('board deatil')
+  }
+
   return (
     <main className="App">
       {
@@ -39,7 +42,7 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} setShowBoardComponent={setShowBoardComponent}/>
           <Routes>
-            <Route path="/boards/" element={<BoardPage user={user} addBoard={addBoard} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard}/>}></Route>
+            <Route path="/boards/" element={<BoardPage user={user} addBoard={addBoard} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard} showBoard={showBoard}/>}></Route>
             <Route path="/*" element={<Navigate to="/boards" />}></Route>
           </Routes>
         </>
