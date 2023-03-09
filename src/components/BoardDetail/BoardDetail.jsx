@@ -1,3 +1,5 @@
+import './BoardDetail.css'
+
 import {useState} from 'react'
 import * as boardAPI from '../../utilities/board-api'
 import ItemForm from '../ItemForm/ItemForm'
@@ -17,15 +19,23 @@ export default function BoardDetail({curBoard, showBoard}) {
         <div>
             <div>{curBoard.name}</div>
             <div>{curBoard.description}</div>
+            { showComponets === 'buttons' ? 
+                <>
+                <div>
+                    <button onClick={() => setShowComponents('web')}>Link Image from the Web</button>
+                    <button onClick={() => setShowComponents('met')}>Collect from The Met</button>
+                </div>
+                <div className='board-imgs-container'>
+                    {curBoard.items.map((item, idx) => <div className='board-detail-img-container' key={idx}><img src={item.url}/></div>)}
+                </div>
+                </>
+                : ''
+            }
         </div>
+
         <div>
-            {showComponets === 'buttons' ? 
-            <>
-                <button onClick={() => setShowComponents('web')}>Link Image from the Web</button>
-                <button onClick={() => setShowComponents('met')}>Collect from The Met</button>
-            </> : ''}
             {showComponets === 'web' ? <ItemForm addItem={addItem}/> : '' }
-            {showComponets === 'met' ? <MetSearch /> : '' }
+            {showComponets === 'met' ? <MetSearch addItem={addItem}/> : '' }
         </div>
         </>
 

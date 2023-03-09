@@ -1,0 +1,12 @@
+.board-imgs-container {
+    display: grid;
+    grid-template-columns: repeat(4, 25%);
+}
+
+/* .board-detail-img-container {
+    position: absolute;
+} */
+
+.board-detail-img-container img {
+    width: 100%;
+}

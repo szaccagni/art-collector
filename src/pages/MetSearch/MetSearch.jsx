@@ -3,7 +3,7 @@ import * as metAPI from '../../utilities/met-api'
 import SearchResults from '../../components/SearchResults/SearchResults'
 import Pagination from '../../components/Pagination/Pagination'
 
-export default function SearchPage() {
+export default function MetSearch({addItem}) {
     const [search, setSearch] = useState('')
     const [curSearch, setCurSearch] = useState('')
     const [resultIDs, setResultIDs] = useState([])
@@ -38,7 +38,7 @@ export default function SearchPage() {
             <button onClick={handleSearch}>search</button>
             { curSearch && 
             <>
-                <SearchResults curSearch={curSearch} curData={curData} curPg={curPg}/>
+                <SearchResults curSearch={curSearch} curData={curData} curPg={curPg} addItem={addItem}/>
                 <Pagination curPg={curPg} handlePageChange={handlePageChange} resultIDs={resultIDs} resultsPerPg={resultsPerPg}/>
             </> }
         </>

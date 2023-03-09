@@ -14,6 +14,10 @@ body {
     font-family: proxima-nova-r;
 }
 
+.flex-container {
+    display: flex;
+}
+
 .NavBar {
     display: flex;
     justify-content: space-between;
@@ -21,8 +25,22 @@ body {
     background-color: #FFFFFF;
     height: 12vh;
 }
+
 .NavBar div {
     display: flex;
     align-items: center;
     margin: 0 20px;
+}
+
+.BoardsIndex {
+    display: grid;
+    grid-template-columns: repeat(2, 60vh);
+    column-gap: 20vh;
+    margin: 0 auto;
+}
+
+.BoardCard {
+    border: 1px solid black;
+    height: 40vh;
+    margin-top: 5vh;
 }

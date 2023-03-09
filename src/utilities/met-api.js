@@ -14,7 +14,7 @@ export async function getArrDetails(objectIDs, curPg, resultsPerPg) {
     while (results.length < resultsPerPg) {
         const id = objectIDs[(start+count)]
         const details = await getObjDetails(id)
-        if (details.primaryImage !== '') {
+        if (details.primaryImage !== '' && details.primaryImage) {
             results.push(details)
         } else {
             removeIds.push(id)
