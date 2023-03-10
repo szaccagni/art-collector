@@ -13,6 +13,7 @@ export default function MetSearch({addItem}) {
     
     async function handleSearch() {
         setCurSearch(search)
+        setCurPg(1)
         const res = await metAPI.search(search)
         const data = await metAPI.getArrDetails(res, curPg, resultsPerPg)
         setResultIDs(data.objectIDs)
