@@ -13,3 +13,12 @@
     margin-bottom: 15px;
     width: 100%;
 }
+
+.delete-board-btn {
+    margin-left: 6px;
+}
+
+.delete-board-btn:hover {
+    background-color: #8B0000;
+    border: #8B0000 1px solid;
+}

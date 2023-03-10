@@ -32,7 +32,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
                 { showComponets === 'init' ? 
                     <div className='editBtns'>
                         <a onClick={() => setShowComponents('buttons')}>Add to your Collection</a>
-                        <a onClick={() => setShowComponents('edit')}>Edit Description</a>
+                        <a onClick={() => setShowComponents('edit')}>Edit</a>
                     </div>
                 : ''}
                 { showComponets === 'buttons' ? 

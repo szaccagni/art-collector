@@ -3,11 +3,11 @@ import sendRequest from './send-request';
 const BASE_URL = '/api/boards'
 
 export async function addItem(boardId, item) {
-    return sendRequest(`${BASE_URL}/${boardId}/items`, 'POST', {boardId, item})
+    return sendRequest(`${BASE_URL}/${boardId}/items`, 'POST', {item})
 }
 
 export async function updateBoard(boardId, board) {
-    return sendRequest(`${BASE_URL}/${boardId}`, 'PUT', {boardId, board})
+    return sendRequest(`${BASE_URL}/${boardId}`, 'PUT', {board})
 }
 
 export async function addBoard(board) {
@@ -16,4 +16,8 @@ export async function addBoard(board) {
 
 export async function getBoards() {
     return sendRequest(`${BASE_URL}`);    
+}
+
+export async function deleteBoard(boardId) {
+    return sendRequest(`${BASE_URL}/${boardId}`, 'DELETE')
 }

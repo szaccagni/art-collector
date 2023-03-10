@@ -8,6 +8,11 @@
     src: URL('./fonts/Proxima-Nova-Regular.otf') format('opentype');
 }
 
+@font-face {
+    font-family: 'proxima-nova-b';
+    src: URL('./fonts/Proxima-Nova-Bold.otf') format('opentype');
+}
+
 :root {
     /* --dark-green: rgb(25,64,38); */
     --dark-green: #228B22;

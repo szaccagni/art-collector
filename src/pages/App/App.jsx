@@ -28,6 +28,7 @@ export default function App() {
     if (res) {
       showBoard(res)
     }
+    setActive('')
     getBoards()
   }
 
@@ -44,10 +45,20 @@ export default function App() {
     getBoards()
   }
 
+  async function deleteBoard(id) {
+    console.log('before app delete board function')
+    await boardAPI.deleteBoard(id)
+    console.log('after app delete board function')
+    getBoards()
+    setShowBoardComponent('index')
+  }
+
   const boardFunctions = {
+    getBoards: getBoards,
     addBoard: addBoard,
     showBoard: showBoard,
-    updateBoard: updateBoard
+    updateBoard: updateBoard,
+    deleteBoard:deleteBoard
   }
 
   return (
@@ -55,7 +66,7 @@ export default function App() {
       {
         user ?
         <>
-          <NavBar user={user} setUser={setUser} active={active} setActive={setActive} setShowBoardComponent={setShowBoardComponent} />
+          <NavBar user={user} setUser={setUser} active={active} setActive={setActive} setShowBoardComponent={setShowBoardComponent} boardFunctions={boardFunctions}/>
           <Routes>
             <Route path="/boards/" element={<BoardPage user={user} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard} showBoard={showBoard} setActive={setActive} boardFunctions={boardFunctions}/>}></Route>
             <Route path="/*" element={<Navigate to="/boards" />}></Route>

@@ -10,9 +10,8 @@ const itemSchema = new Schema({
         type: String,
         required: true
     },
-    apiID : {
-        type: Number,
-    }
+    artist : String,
+    apiID :  Number,
 }, {
     timestamps: true
 })

@@ -2,10 +2,12 @@ import { Link } from 'react-router-dom'
 import { useState } from 'react'
 import * as userService from '../../utilities/users-service' 
 
-export default function NavBar({ user, setUser, active, setActive, setShowBoardComponent}) {
+export default function NavBar({ user, setUser, active, setActive, setShowBoardComponent, boardFunctions}) {
     const activeStyle = {
         textDecoration: 'underline',
-        color: 'var(--dark-green)'
+        color: 'var(--dark-green)',
+        fontFamily: 'proxima-nova-b',
+        fontSize: '20px'
     }
 
     function handleLogOut() {
@@ -16,6 +18,7 @@ export default function NavBar({ user, setUser, active, setActive, setShowBoardC
     function handleClick(el) {
         setActive(el)
         setShowBoardComponent(el)
+        boardFunctions.getBoards()
     }
 
     return (
