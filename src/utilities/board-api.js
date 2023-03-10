@@ -6,6 +6,10 @@ export async function addItem(boardId, item) {
     return sendRequest(`${BASE_URL}/${boardId}/items`, 'POST', {item})
 }
 
+export async function removeItem(itemId) {
+    return sendRequest(`/api/items/${itemId}`, 'DELETE')
+}
+
 export async function updateBoard(boardId, board) {
     return sendRequest(`${BASE_URL}/${boardId}`, 'PUT', {board})
 }

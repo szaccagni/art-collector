@@ -19,6 +19,11 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
         boardFunctions.showBoard(updatedBoard)
     }
 
+    async function removeItem(item) {
+        const updatedBoard = await boardAPI.removeItem(item._id)
+        boardFunctions.showBoard(updatedBoard)
+    }
+
     return (
         <div className='board-detail flex-container'>
             <div className='board-detail-left'>
@@ -31,8 +36,9 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
                 { showComponets === 'edit' ? <BoardForm user={user} board={curBoard} boardFunctions={boardFunctions}/>: ''}
                 { showComponets === 'init' ? 
                     <div className='editBtns'>
-                        <a onClick={() => setShowComponents('buttons')}>Add to your Collection</a>
                         <a onClick={() => setShowComponents('edit')}>Edit</a>
+                        <a onClick={() => setShowComponents('buttons')}>Add to Collection</a>
+                        <a onClick={() => setShowComponents('remove')}>Remove from Collection</a>
                     </div>
                 : ''}
                 { showComponets === 'buttons' ? 
@@ -51,10 +57,14 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
             <div className='board-detail-right'>
                 {showComponets === 'web' ? <ItemForm addItem={addItem}/> : '' }
                 {showComponets === 'met' ? <MetSearch addItem={addItem}/> : '' }
-                {showComponets === 'buttons' || showComponets === 'init' || showComponets === 'edit' ? 
+                {showComponets !== 'web' && showComponets !== 'met' ? 
                     <div className='board-imgs-container'>
                         {curBoard.items.map((item, idx) => 
-                            <div className='board-detail-img-container' key={idx}><img src={item.url}/></div>
+                            <div className='board-detail-img-container' key={idx}>
+                                    {showComponets === 'remove' ? 
+                                    <button onClick={() => removeItem(item)}>x</button> : ''}
+                                    <img src={item.url}/>
+                            </div>
                         )}
                     </div>
                 : '' }

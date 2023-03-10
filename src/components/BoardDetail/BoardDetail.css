@@ -54,6 +54,25 @@
     columns: 4 200px;
 }
 
+.board-detail-img-container {
+    position: relative;
+}
+
+.board-detail-img-container button {
+    position: absolute;
+    right:0;
+    cursor: pointer;
+    background-color: var(--red);
+    border: var(--red) 1px solid;
+    color: white;
+    padding: 10px;
+}
+
+.board-detail-img-container button:hover{
+    color:var(--red);
+    background-color: white;
+}
+
 .board-detail-img-container img {
     width: 100%;
 }

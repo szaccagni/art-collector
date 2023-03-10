@@ -4,6 +4,7 @@ module.exports = {
     create,
     index,
     addItem,
+    removeItem,
     update,
     delete: deleteBoard
 }
@@ -28,6 +29,17 @@ async function addItem(req,res) {
     res.json(board)
 }
 
+async function removeItem(req, res) {
+    try {
+        const board = await Board.findOne({'items._id': req.params.id})
+        board.items.remove(req.params.id)
+        await board.save()
+        res.json(board)
+    } catch (err) {
+        res.json(`error: ${err}`)
+    }
+}
+
 async function update(req, res) {
     const board = await Board.findById(req.params.id)
     board.name = req.body.board.name
@@ -41,6 +53,6 @@ async function deleteBoard(req,res) {
         await Board.deleteOne({_id: req.params.id})
         res.json('successful delete')
     } catch(err) {
-        res.json(`there was an error ${err}`)
+        res.json(`error: ${err}`)
     }
 }

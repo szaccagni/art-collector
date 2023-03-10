@@ -14,8 +14,8 @@
 }
 
 :root {
-    /* --dark-green: rgb(25,64,38); */
     --dark-green: #228B22;
+    --red: #8B0000;
     --dark-grey: #4a4a4a;
     --light-grey: #f9f9f9;
 }

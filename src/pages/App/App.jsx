@@ -46,9 +46,7 @@ export default function App() {
   }
 
   async function deleteBoard(id) {
-    console.log('before app delete board function')
     await boardAPI.deleteBoard(id)
-    console.log('after app delete board function')
     getBoards()
     setShowBoardComponent('index')
   }

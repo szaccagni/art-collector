@@ -28,7 +28,8 @@ export default function BoardForm({user, board, boardFunctions}) {
     }
 
     function handleDelete() {
-        boardFunctions.deleteBoard(board._id)
+        const confirmDelete = window.confirm('are you sure you want to delete this board?')
+        if (confirmDelete) boardFunctions.deleteBoard(board._id)
     }
 
     return (
