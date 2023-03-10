@@ -1,8 +1,8 @@
-import NewBoardForm from "../../components/NewBoardForm/NewBoardForm"
+import BoardForm from "../../components/BoardForm/BoardForm"
 import BoardsIndex from "../../components/BoardsIndex/BoardsIndex"
 import BoardDetail from "../../components/BoardDetail/BoardDetail"
 
-export default function BoardPage({user, addBoard, boards, showBoardComponent, curBoard, showBoard, setActive}) {
+export default function BoardPage({user, boards, showBoardComponent, curBoard, setActive, boardFunctions}) {
     const blankBoard = {
         name: '',
         description: ''
@@ -13,14 +13,14 @@ export default function BoardPage({user, addBoard, boards, showBoardComponent, c
             { showBoardComponent === 'new board' ? 
                 <div className='board-detail flex-container'>
                     <div className='board-detail-left'>
-                        <NewBoardForm user={user} addBoard={addBoard} board={blankBoard} /> 
+                        <BoardForm user={user} board={blankBoard} boardFunctions={boardFunctions}/> 
                     </div>
                 </div>
             : '' }
 
-            { showBoardComponent === 'index' ?  <BoardsIndex boards={boards} showBoard={showBoard} setActive={setActive} /> : ''}  
+            { showBoardComponent === 'index' ?  <BoardsIndex boards={boards} setActive={setActive} boardFunctions={boardFunctions}/> : ''}  
 
-            { showBoardComponent === 'board deatil' ? <BoardDetail user={user} curBoard={curBoard} showBoard={showBoard} /> : ''} 
+            { showBoardComponent === 'board deatil' ? <BoardDetail user={user} curBoard={curBoard} boardFunctions={boardFunctions}/> : ''} 
         </>
     )
 }

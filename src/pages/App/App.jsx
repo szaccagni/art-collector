@@ -18,6 +18,11 @@ export default function App() {
     getBoards()
   }, [user])
 
+  async function getBoards() {
+    const userBoards = await boardAPI.getBoards()
+    setBoards(userBoards)
+  }
+
   async function addBoard(newBoard) {
     const res = await boardAPI.addBoard(newBoard)
     if (res) {
@@ -26,14 +31,23 @@ export default function App() {
     getBoards()
   }
 
-  async function getBoards() {
-    const userBoards = await boardAPI.getBoards()
-    setBoards(userBoards)
-  }
-
   function showBoard(board) {
     setCurBoard(board)
     setShowBoardComponent('board deatil')
+  }
+
+  async function updateBoard(board) {
+    const res = await boardAPI.updateBoard(board._id, board)
+    if (res) {
+      showBoard(res)
+    }
+    getBoards()
+  }
+
+  const boardFunctions = {
+    addBoard: addBoard,
+    showBoard: showBoard,
+    updateBoard: updateBoard
   }
 
   return (
@@ -43,7 +57,7 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} active={active} setActive={setActive} setShowBoardComponent={setShowBoardComponent} />
           <Routes>
-            <Route path="/boards/" element={<BoardPage user={user} addBoard={addBoard} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard} showBoard={showBoard} setActive={setActive}/>}></Route>
+            <Route path="/boards/" element={<BoardPage user={user} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard} showBoard={showBoard} setActive={setActive} boardFunctions={boardFunctions}/>}></Route>
             <Route path="/*" element={<Navigate to="/boards" />}></Route>
           </Routes>
         </>

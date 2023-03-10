@@ -1,8 +1,8 @@
 import './BoardCard.css'
 
-export default function BoardCard({board, showBoard, setActive}) {
+export default function BoardCard({board, setActive, boardFunctions}) {
     function handleClick() {
-        showBoard(board)
+        boardFunctions.showBoard(board)
         setActive('')
     }
     

@@ -1,18 +1,22 @@
 import './BoardDetail.css'
 
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import * as boardAPI from '../../utilities/board-api'
 import ItemForm from '../ItemForm/ItemForm'
 import MetSearch from '../../pages/MetSearch/MetSearch'
-import NewBoardForm from '../NewBoardForm/NewBoardForm'
+import BoardForm from '../BoardForm/BoardForm'
 
-export default function BoardDetail({curBoard, showBoard, user}) {
+export default function BoardDetail({curBoard, user, boardFunctions}) {
     const [showComponets, setShowComponents] = useState('init')
 
+    useEffect( function() {
+        setShowComponents('init')
+    }, [curBoard])
+    
     async function addItem(item) {
         const updatedBoard = await boardAPI.addItem(curBoard._id, item)
         setShowComponents('buttons')
-        showBoard(updatedBoard)
+        boardFunctions.showBoard(updatedBoard)
     }
 
     return (
@@ -24,7 +28,7 @@ export default function BoardDetail({curBoard, showBoard, user}) {
                         <div className='board-detail-description'>{curBoard.description}</div>
                     </div>
                 : ''}
-                { showComponets === 'edit' ? <NewBoardForm user={user} addBoard={''} board={curBoard}/>: ''}
+                { showComponets === 'edit' ? <BoardForm user={user} board={curBoard} boardFunctions={boardFunctions}/>: ''}
                 { showComponets === 'init' ? 
                     <div className='editBtns'>
                         <a onClick={() => setShowComponents('buttons')}>Add to your Collection</a>

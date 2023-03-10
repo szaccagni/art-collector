@@ -1,7 +1,7 @@
-import './NewBoardForm.css'
+import './BoardForm.css'
 import {useState} from 'react'
 
-export default function NewBoardForm({user, addBoard, board}) {
+export default function BoardForm({user, board, boardFunctions}) {
     const [formData, setFormData] = useState(board)   
     const formType = board.name !== '' ? 'update' : 'new' 
 
@@ -19,12 +19,12 @@ export default function NewBoardForm({user, addBoard, board}) {
             description: formData.description,
             user : user,
         }
-        addBoard(newBoard)
+        boardFunctions.addBoard(newBoard)
         setFormData({name: '', description: ''})
     }
 
     function handleUpdate() {
-        console.log('i worked')
+        boardFunctions.updateBoard(formData)
     }
 
     return (
