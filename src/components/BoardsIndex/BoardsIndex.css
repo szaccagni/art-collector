@@ -1,0 +1,10 @@
+.boards-index-container {
+    padding: 15px;
+}
+
+.boards-index {
+    display: grid;
+    grid-template-columns: repeat(2, 45%);
+    column-gap: 10%;
+    margin: 0 auto;
+}

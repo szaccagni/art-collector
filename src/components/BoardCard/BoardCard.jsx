@@ -1,13 +1,17 @@
 import './BoardCard.css'
 
-export default function BoardCard({board, showBoard}) {
+export default function BoardCard({board, showBoard, setActive}) {
+    function handleClick() {
+        showBoard(board)
+        setActive('')
+    }
     
     return (
-        <a className='BoardCard' onClick={() => showBoard(board)}>
+        <a className='board-card' onClick={handleClick}>
             <div className='board-name'>{board.name}</div>
-            {/* <div>
-                {board.items.map(item => <div><img src={item.url}/></div>)}
-            </div> */}
+            <div className='board-card-img-container'>
+                {board.items.map((item, idx) => <div key={idx}><img src={item.url}/></div>)}
+            </div>
         </a>
     )
 }

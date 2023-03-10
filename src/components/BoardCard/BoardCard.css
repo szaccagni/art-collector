@@ -1,5 +1,20 @@
+.board-card {
+    height: 40vh;
+    margin-top: 5vh;
+    overflow: hidden;
+    cursor: pointer;
+}
+
 .board-name {
     font-family: archivo-black;
     font-size: 30px;
     text-align: left;
+}
+
+.board-card-img-container {
+    columns: 3;
+}
+
+.board-card-img-container img {
+    width: 100%;
 }

@@ -1,0 +1,13 @@
+.board-form-name {
+    font-family: archivo-black;
+    font-size: 45px;    
+}
+
+.board-form-description {
+    font-family: proxima-nova-r;
+}
+
+.board-form input {
+    margin-bottom: 15px;
+    width: 100%;
+}

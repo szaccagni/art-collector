@@ -1,10 +1,9 @@
+import './NewBoardForm.css'
 import {useState} from 'react'
 
-export default function NewBoardForm({user, addBoard}) {
-    const [formData, setFormData] = useState({
-        name: '',
-        description: ''
-    })    
+export default function NewBoardForm({user, addBoard, board}) {
+    const [formData, setFormData] = useState(board)   
+    const formType = board.name !== '' ? 'update' : 'new' 
 
     function handleChange(e) {
         const newFormData = {
@@ -14,7 +13,7 @@ export default function NewBoardForm({user, addBoard}) {
         setFormData(newFormData)
     }
 
-    function handleClick() {
+    function handleSave() {
         const newBoard ={
             name: formData.name,
             description: formData.description,
@@ -24,11 +23,16 @@ export default function NewBoardForm({user, addBoard}) {
         setFormData({name: '', description: ''})
     }
 
+    function handleUpdate() {
+        console.log('i worked')
+    }
+
     return (
-        <>
-            <input name="name" placeholder="name" value={formData.name} onChange={handleChange}></input>
-            <input name="description" placeholder="description" value={formData.description} onChange={handleChange}></input>
-            <button onClick={handleClick}>save</button>
-        </>
+        <div className='board-form'>
+            <input className='board-form-name' name="name" placeholder="name" value={formData.name} onChange={handleChange}></input>
+            <input className='board-form-description' name="description" placeholder="description" value={formData.description} onChange={handleChange}></input>
+            
+            <button className='btn' onClick={formType === 'new' ? handleSave : handleUpdate}>save</button>
+        </div>
     )
 }

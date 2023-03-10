@@ -1,5 +1,56 @@
-.board-imgs-container {
+.board-detail {
     padding: 15px;
+}
+
+.board-detail-left {
+    width: 25%;
+    margin-right: 15px;
+}
+
+.board-detail-right {
+    width: 100%;
+}
+
+.editBtns {
+    font-size: 14px;
+    text-decoration: underline;
+}
+
+.editBtns a {
+    cursor: pointer;
+}
+
+.editBtns a:not(:last-child) {
+    margin-right: 10px;
+}
+
+.buttons {
+    margin-bottom: 15px;
+}
+
+.board-detail-info {
+    align-items: left;
+}
+
+.board-detail-info div {
+    margin-bottom: 15px;
+}
+
+.board-detail-title {
+    font-family: archivo-black;
+    font-size: 45px;
+    cursor: pointer;
+}
+
+.board-detail-title:hover {
+    color: var(--dark-green);
+}
+
+.board-detail-description {
+    font-size: 18px;
+}
+
+.board-imgs-container {
     columns: 4 200px;
 }
 

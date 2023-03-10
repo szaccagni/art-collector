@@ -1,19 +1,36 @@
 import { Link } from 'react-router-dom'
+import { useState } from 'react'
 import * as userService from '../../utilities/users-service' 
 
-export default function NavBar({ user, setUser, setShowBoardComponent}) {
+export default function NavBar({ user, setUser, active, setActive, setShowBoardComponent}) {
+    const activeStyle = {
+        textDecoration: 'underline',
+        color: 'var(--dark-green)'
+    }
 
     function handleLogOut() {
         userService.logOut()
         setUser(null)
     }
 
+    function handleClick(el) {
+        setActive(el)
+        setShowBoardComponent(el)
+    }
+
     return (
         <nav className="NavBar">
             <div><div>Welcome, {user.name}</div></div>
             <div>
-                <div><a onClick={() => setShowBoardComponent('new board')}>Create a New Board</a></div>
-                <div><Link to="" onClick={handleLogOut}>Log Out</Link></div>
+                <div>
+                    <a onClick={() => handleClick('index')} className='nav-link'  
+                        style={ active === 'index' ?  activeStyle : {} }>Boards</a>
+                </div>
+                <div>
+                    <a onClick={() => handleClick('new board')} className='nav-link'
+                        style={ active === 'new board' ? activeStyle : {} }>Create a New Board</a>
+                </div>
+                <div><Link to="" onClick={handleLogOut} className='nav-link'>Log Out</Link></div>
             </div>
         </nav>
     )

@@ -12,6 +12,7 @@ export default function App() {
   const [ showBoardComponent, setShowBoardComponent ] = useState('index')
   const [ boards, setBoards ] = useState([])
   const [ curBoard, setCurBoard ] = useState('')
+  const [ active, setActive ] = useState('index')
 
   useEffect( function () {
     getBoards()
@@ -40,9 +41,9 @@ export default function App() {
       {
         user ?
         <>
-          <NavBar user={user} setUser={setUser} setShowBoardComponent={setShowBoardComponent}/>
+          <NavBar user={user} setUser={setUser} active={active} setActive={setActive} setShowBoardComponent={setShowBoardComponent} />
           <Routes>
-            <Route path="/boards/" element={<BoardPage user={user} addBoard={addBoard} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard} showBoard={showBoard}/>}></Route>
+            <Route path="/boards/" element={<BoardPage user={user} addBoard={addBoard} boards={boards} showBoardComponent={showBoardComponent} curBoard={curBoard} showBoard={showBoard} setActive={setActive}/>}></Route>
             <Route path="/*" element={<Navigate to="/boards" />}></Route>
           </Routes>
         </>
