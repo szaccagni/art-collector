@@ -8,13 +8,10 @@ export default function SearchResultCard({result, addItem}) {
     }
 
     return (
-        <div className='SearchResultCard'>
-            <div>{itemData.apiID}</div>
-            <div>{itemData.title}
-            {itemData.artist !== '' ?  ` by  ${itemData.artist}` : ''}
-            </div>
-            <img src={result.primaryImage} alt={result.title}></img>
-            <div><button onClick={() => addItem(itemData)}>add to board</button></div>
+        <div className='search-result-card'>
+            <span>{itemData.title} {itemData.artist !== '' ?  ` by  ${itemData.artist}` : ''}</span>
+            <span><img src={result.primaryImage} alt={result.title}></img></span>
+            <span><button className='btn btn2' onClick={() => addItem(itemData)}> add </button></span>
         </div>
     )
 }

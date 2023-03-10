@@ -1,0 +1,17 @@
+.met-search-bar button {
+    margin: 0;
+}
+
+.met-search-bar input {
+    margin-right: 5px;
+    font-family: archivo-black;
+    font-size: 20px;    
+}
+
+.met-search-text {
+    margin: 15px 0;
+    display: flex;
+    align-items: center;
+    font-size: 22px;
+    color: var(--dark-green);
+}

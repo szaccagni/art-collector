@@ -39,9 +39,19 @@ body {
     cursor: pointer;
 }
 
-.btn:hover {
+.btn2 {
+    background-color: #f9f9f9;
+    color: #4a4a4a;
+}
+
+.btn:hover, .btn2:hover {
     background-color: var(--dark-green);
     border: 1px solid var(--dark-green);
+    color:white;
+}
+
+.bold {
+    font-family: proxima-nova-b;
 }
 
 .flex-container {

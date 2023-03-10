@@ -1,7 +1,15 @@
-.SearchResultCard {
-    border: 1px solid black;
+.search-result-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
 }
 
-.SearchResultCard img {
+.search-result-card img {
     width: 80%;
+}
+
+.search-result-card span {
+    margin: 3px 0;
 }

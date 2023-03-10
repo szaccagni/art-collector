@@ -1,3 +1,4 @@
+import './MetSearch.css'
 import {useState} from 'react'
 import * as metAPI from '../../utilities/met-api'
 import SearchResults from '../../components/SearchResults/SearchResults'
@@ -30,18 +31,21 @@ export default function MetSearch({addItem}) {
     }
 
     return( 
-        <>
-            <input 
-                value={search} 
-                onChange={ e => setSearch(e.target.value)}
-                required
-            ></input> 
-            <button onClick={handleSearch}>search</button>
+        <div className='met-search-container'>
+            <div className='met-search-bar flex-container'>
+                <input 
+                    value={search} 
+                    onChange={ e => setSearch(e.target.value)}
+                    required
+                ></input> 
+                <button className='btn' onClick={handleSearch}>general search</button>
+            </div>
             { curSearch && 
             <>
-                <SearchResults curSearch={curSearch} curData={curData} curPg={curPg} addItem={addItem}/>
+                <div className='met-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>
+                <SearchResults curData={curData} curPg={curPg} addItem={addItem}/>
                 <Pagination curPg={curPg} handlePageChange={handlePageChange} resultIDs={resultIDs} resultsPerPg={resultsPerPg}/>
             </> }
-        </>
+        </div>
     )
 }

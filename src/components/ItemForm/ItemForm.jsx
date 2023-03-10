@@ -1,3 +1,4 @@
+import './ItemForm.css'
 import { useState } from 'react'
 
 export default function ItemForm({addItem}) {
@@ -15,10 +16,10 @@ export default function ItemForm({addItem}) {
     }
 
     return (
-        <>
+        <div className='item-form-container flex-container'>
             <input name='title' placeholder='title' value={formData.title} onChange={handleChange}></input>
             <input name='url' placeholder='url' value={formData.url} onChange={handleChange}></input>
-            <button onClick={() => addItem(formData)}>add to board</button>
-        </>
+            <button className='btn' onClick={() => addItem(formData)}>add to board</button>
+        </div>
     )
 }
