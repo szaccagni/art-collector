@@ -1,0 +1,33 @@
+.signup-form-conainter {
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.signup-form-conainter form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.signup-form-conainter button{
+    font-family: archivo-black;
+    font-size: 45px;   
+    width: 60%;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.signup-form-conainter input {
+    font-family: archivo-black;
+    font-size: 45px;   
+    width: 80%;
+    margin: 15px 0;
+}
+
+.login-btn {
+    width: 19.3% !important;
+}

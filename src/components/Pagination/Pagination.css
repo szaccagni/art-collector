@@ -1,0 +1,23 @@
+
+.pagination-active-btn {
+    font-family: proxima-nova-b;
+    border: 1px solid black !important;
+    border-radius: 5px;
+}
+
+.pagination-container {
+    margin: 25px 0;
+}
+
+.pagination-container button {
+    background-color: var(--light-grey);
+    border: none;
+    font-family: proxima-nova-r;
+    font-size: 16px;
+    cursor: pointer;
+    margin: 0 5px 0 0;
+}
+
+.pagination-container button:not(:first-child) {
+    margin-left: 5px;
+}

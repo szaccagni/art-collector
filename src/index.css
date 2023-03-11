@@ -81,3 +81,7 @@ body {
 .nav-link:hover {
     color: var(--dark-green);
 }
+
+.error-message {
+    color: var(--red);
+}

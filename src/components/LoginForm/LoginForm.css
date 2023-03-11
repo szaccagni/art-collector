@@ -1,0 +1,33 @@
+.login-form-container {
+    height: 100vh;
+    justify-content: center;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.login-form-container form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-form-container button{
+    font-family: archivo-black;
+    font-size: 45px;   
+    width: 60%;
+    margin: 15px 0;
+    cursor: pointer;
+}
+
+.login-form-container input {
+    font-family: archivo-black;
+    font-size: 45px;   
+    width: 80%;
+    margin: 15px 0;
+}
+
+.signup-btn {
+    width: 19.3% !important;
+}

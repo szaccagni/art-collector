@@ -5,13 +5,15 @@ import SearchResults from '../../components/SearchResults/SearchResults'
 import Pagination from '../../components/Pagination/Pagination'
 
 export default function MetSearch({addItem}) {
+    const [resultsPerPg, setResultsPerPg] = useState(12)
     const [search, setSearch] = useState('')
     const [curSearch, setCurSearch] = useState('')
     const [resultIDs, setResultIDs] = useState([])
     const [curData, setCurData] = useState([])
     const [curPg, setCurPg] = useState(1)
-    const [resultsPerPg, setResultsPerPg] = useState(12)
     
+    const resultsLen = resultIDs.length
+
     async function handleSearch() {
         setCurSearch(search)
         setCurPg(1)
@@ -51,6 +53,7 @@ export default function MetSearch({addItem}) {
         const data = await metAPI.getArrDetails(res, curPg, resultsPerPg)
         setResultIDs(data.objectIDs)
         setCurData(data.results)
+        setCurPg(1)
         setSearch("");
     }
 
@@ -80,7 +83,7 @@ export default function MetSearch({addItem}) {
             <>
                 <div className='met-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>
                 <SearchResults curData={curData} curPg={curPg} addItem={addItem}/>
-                <Pagination curPg={curPg} handlePageChange={handlePageChange} resultIDs={resultIDs} resultsPerPg={resultsPerPg}/>
+                <Pagination curPg={curPg} handlePageChange={handlePageChange} resultsLen={resultsLen} resultsPerPg={resultsPerPg}/>
             </> }
         </div>
     )
