@@ -6,6 +6,12 @@ export async function search(term) {
     return response.objectIDs
 }
 
+export async function filterSearch(filter, term) {
+    let endpoint = `${BASE_URL}/search?${filter}=true&hasImages=true&q=${term}`
+    let response = await fetch(endpoint).then((res) => res.json());
+    return response.objectIDs
+}
+
 export async function getArrDetails(objectIDs, curPg, resultsPerPg) {
     const removeIds = []
     const start = (curPg * resultsPerPg) - resultsPerPg

@@ -16,6 +16,38 @@ export default function MetSearch({addItem}) {
         setCurSearch(search)
         setCurPg(1)
         const res = await metAPI.search(search)
+        await handleSearchResults(res) 
+    }
+
+    async function handleHighlightsSearch() {
+        setCurSearch(`${search} (highlights only)`)
+        setCurPg(1)
+        const res = await metAPI.filterSearch('isHighlight', search)
+        await handleSearchResults(res) 
+    }
+    
+    async function handleTitlesSearch() {
+        setCurSearch(`${search} (titles only)`)
+        setCurPg(1)
+        const res = await metAPI.filterSearch('title', search)
+        await handleSearchResults(res) 
+    }
+
+    async function handleArtistCultureSearch() {
+        setCurSearch(`${search} (artists and culture only)`)
+        setCurPg(1)
+        const res = await metAPI.filterSearch('artistOrCulture', search)
+        await handleSearchResults(res) 
+    }
+
+    async function handleOnViewSearch() {
+        setCurSearch(`${search} (art on view only)`)
+        setCurPg(1)
+        const res = await metAPI.filterSearch('isOnView', search)
+        await handleSearchResults(res) 
+    }
+
+    async function handleSearchResults(res) {
         const data = await metAPI.getArrDetails(res, curPg, resultsPerPg)
         setResultIDs(data.objectIDs)
         setCurData(data.results)
@@ -39,6 +71,10 @@ export default function MetSearch({addItem}) {
                     required
                 ></input> 
                 <button className='btn' onClick={handleSearch}>general search</button>
+                <button className='btn'onClick={handleHighlightsSearch}>search highlights</button>
+                <button className='btn'onClick={handleTitlesSearch}>search titles</button>
+                <button className='btn'onClick={handleArtistCultureSearch}>search artists and culture</button>
+                <button className='btn'onClick={handleOnViewSearch}>search art on view</button>
             </div>
             { curSearch && 
             <>
