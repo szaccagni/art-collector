@@ -4,12 +4,35 @@
     justify-content: center;
     align-items: center;
     text-align: center;
+    position: relative;
+    break-inside: avoid;
+    margin-bottom: 15px;
+    padding-bottom: 25px;
+    background-color: var(--pale-silver);
+}
+
+.hover {
+    opacity: .5;
+}
+
+.hide-btn {
+    display: none;
 }
 
 .search-result-card img {
     width: 80%;
+    cursor: pointer;
 }
 
 .search-result-card span {
     margin: 3px 0;
+}
+
+.search-result-btn-container {
+    position: absolute;
+}
+
+.result-title {
+    height: 25px;
+    display: flex;
 }

@@ -1,7 +1,8 @@
 .SearchResults {
-    display: grid;
+    /* display: grid;
     grid-template-columns: repeat(3,30%);
     grid-column-gap: 4vw;
     grid-row-gap: 1vw;
-    justify-content: center;
+    justify-content: center; */
+    columns: 3;
 }
