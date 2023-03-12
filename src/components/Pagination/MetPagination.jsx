@@ -8,7 +8,7 @@ export default function MetPagination({curPg, handlePageTurn, resultsLen, result
 
     function generatePages() {
         const pgs = []
-        for (let i = (curPg-2); i <= (curPg+2); i++) {
+        for (let i = (curPg-3); i <= (curPg+3); i++) {
             if (i <= totalPages && i > 0) pgs.push(i)
         }        
         return pgs

@@ -30,6 +30,7 @@ export default function MetSearch({addItem}) {
     }
 
     async function handleSearchResults(res) {
+        setSearch("")
         if (res) {
             const data = await metAPI.getArrDetails(res, curPg, resultsPerPg)
             setResultIDs(data.objectIDs)
@@ -37,7 +38,6 @@ export default function MetSearch({addItem}) {
         } else {
             setNoResults(true)
             setCurPg(1)
-            setSearch("");
         }
     }
 
