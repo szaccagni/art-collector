@@ -24,11 +24,11 @@ export default function SearchResultCard({result, addItem}) {
 
     return (
         <div className='search-result-card'>
-            <span className='result-title'>
-                <span className='bold'>{itemData.title}</span> &nbsp;
-                <span>{itemData.artist !== '' ?  ` by  ${itemData.artist}` : ''}</span>
-            </span>
-            <span><img className={imgClass} src={result.primaryImage} alt={result.title} onMouseEnter={handleHover} onMouseLeave={handleMouseLeave}></img></span>
+            <div className='result-title'>
+                <span><span className='bold'>{itemData.title}</span> &nbsp;
+                {itemData.artist !== '' ?  `by  ${itemData.artist}` : ''}</span>
+            </div>
+            <span><img className={imgClass} src={itemData.url} alt={itemData.title} onMouseEnter={handleHover} onMouseLeave={handleMouseLeave}></img></span>
             <span className={buttonClass}><button className='btn btn2' onMouseEnter={handleHover} onClick={() => addItem(itemData)}> add </button></span>
         </div>
     )

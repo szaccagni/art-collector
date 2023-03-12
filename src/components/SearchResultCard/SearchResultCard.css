@@ -33,6 +33,9 @@
 }
 
 .result-title {
-    height: 25px;
+    min-height: 50px;
+    padding: 7px;
     display: flex;
+    flex-wrap: wrap;
+    align-items: center;
 }

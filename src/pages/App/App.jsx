@@ -16,6 +16,7 @@ export default function App() {
 
   useEffect( function () {
     getBoards()
+    setShowBoardComponent('index')
   }, [user])
 
   async function getBoards() {

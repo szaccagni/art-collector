@@ -1,3 +1,8 @@
+.met-search-bar {
+    align-items: end;
+    margin-bottom: 20px;
+}
+
 .met-search-bar button {
     margin-right: 5px;
     margin-bottom: 0;
@@ -9,10 +14,30 @@
     font-size: 20px;    
 }
 
+.met-search-text-container {
+    padding-bottom: 15px;
+}
+
 .met-search-text {
     margin: 15px 0;
     display: flex;
     align-items: center;
+    justify-content: center;
     font-size: 22px;
     color: var(--dark-green);
+}
+
+.met-search-title{
+    width: 10%;
+}
+
+.met-search-title img {
+    width: 100%;
+}
+
+.met-search-bar-form {
+    align-items: stretch;
+    display: flex;
+    padding-left: 10px;
+    padding-bottom: 10px;
 }

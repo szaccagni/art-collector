@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react'
 import * as boardAPI from '../../utilities/board-api'
 import ItemForm from '../ItemForm/ItemForm'
 import MetSearch from '../../pages/MetSearch/MetSearch'
+import RijksSearch from '../../pages/RijksSearch/RijksSearch'
 import BoardForm from '../BoardForm/BoardForm'
 
 export default function BoardDetail({curBoard, user, boardFunctions}) {
@@ -49,6 +50,9 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
                         <div>
                             <button className='btn' onClick={() => setShowComponents('met')}>Collect from The Met</button>
                         </div>
+                        <div>
+                            <button className='btn' onClick={() => setShowComponents('rijks')}>Collect from Rijks</button>
+                        </div>
                     </div>
                     : ''
                 }
@@ -57,7 +61,8 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
             <div className='board-detail-right'>
                 {showComponets === 'web' ? <ItemForm addItem={addItem}/> : '' }
                 {showComponets === 'met' ? <MetSearch addItem={addItem}/> : '' }
-                {showComponets !== 'web' && showComponets !== 'met' ? 
+                {showComponets === 'rijks' ? <RijksSearch addItem={addItem}/> : '' }
+                {showComponets !== 'web' && showComponets !== 'met' && showComponets !== 'rijks' ? 
                     <div className='board-imgs-container'>
                         {curBoard.items.map((item, idx) => 
                             <div className='board-detail-img-container' key={idx}>

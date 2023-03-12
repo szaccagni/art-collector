@@ -11,7 +11,7 @@ const itemSchema = new Schema({
         required: true
     },
     artist : String,
-    apiID :  Number,
+    apiID :  String,
 }, {
     timestamps: true
 })
