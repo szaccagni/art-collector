@@ -9,7 +9,6 @@ export default function RijksPagination({curPg, totalResults, resultsPerPg, hand
         for (let i = (curPg-2); i <= (curPg+2); i++) {
             if (i <= totalPages && i > 0) pgs.push(i)
         }        
-        console.log(pgs)
         return pgs
     }
 
@@ -36,6 +35,7 @@ export default function RijksPagination({curPg, totalResults, resultsPerPg, hand
                         <button  onClick={() => handlePageTurn(totalPages)}>Last</button>
                     </>
                 : ''}
+                <div className='pagination-results'>({totalResults} total results)</div>
                 </>
             : ''}
         </div>

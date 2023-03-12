@@ -2,7 +2,7 @@ import './MetSearch.css'
 import {useState} from 'react'
 import * as metAPI from '../../utilities/met-api'
 import SearchResults from '../../components/SearchResults/SearchResults'
-import Pagination from '../../components/Pagination/Pagination'
+import MetPagination from '../../components/Pagination/MetPagination'
 
 export default function MetSearch({addItem}) {
     const [resultsPerPg, setResultsPerPg] = useState(20)
@@ -36,8 +36,9 @@ export default function MetSearch({addItem}) {
         setSearch("");
     }
 
-    async function handlePageChange(num) {
-        console.log('handle pg turn')
+    async function handlePageTurn(num) {
+        setCurData([])
+        console.log('pg turn: ', num)
         const data = await metAPI.getArrDetails(resultIDs, num, resultsPerPg)
         setResultIDs(data.objectIDs)
         setCurData(data.results)
@@ -72,7 +73,7 @@ export default function MetSearch({addItem}) {
             { curSearch && 
             <>
                 <SearchResults curData={curData} curPg={curPg} addItem={addItem}/>
-                <Pagination curPg={curPg} handlePageChange={handlePageChange} resultsLen={resultsLen} resultsPerPg={resultsPerPg}/>
+                <MetPagination curPg={curPg} handlePageTurn={handlePageTurn} resultsLen={resultsLen} resultsPerPg={resultsPerPg}/>
             </> }
         </div>
     )
