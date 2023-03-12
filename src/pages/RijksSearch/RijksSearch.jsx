@@ -11,6 +11,7 @@ export default function RijksSearch({addItem}) {
     const [curSearch, setCurSearch] = useState('')
     const [curData, setCurData] = useState([])
     const [totalResults, setTotalResults] = useState(0)
+    const [noResults, setNoResults] = useState(false)
 
     async function handleSearch() {
         setCurSearch(search)
@@ -21,8 +22,12 @@ export default function RijksSearch({addItem}) {
 
     async function handleSearchResults(term) {
         const res = await rijksAPI.search(term,resultsPerPg,curPg)
-        setCurData(res.curData)
-        setTotalResults(res.totalCount)
+        if (res.totalCount === 0) {
+            setNoResults(true)
+        } else {
+            setCurData(res.curData)
+            setTotalResults(res.totalCount)
+        }
     }
 
     async function handlePageTurn(pg) {
@@ -48,7 +53,7 @@ export default function RijksSearch({addItem}) {
             { curSearch && 
             <>
                 <div className='rijks-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>
-                <SearchResults curData={curData} curPg={curPg} addItem={addItem}/>
+                <SearchResults curData={curData} addItem={addItem} noResults={noResults}/>
                 <RijksPagination curPg={curPg} totalResults={totalResults} resultsPerPg={resultsPerPg} handlePageTurn={handlePageTurn}/>
             </> }
         </div>

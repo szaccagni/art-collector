@@ -11,6 +11,7 @@ export default function MetSearch({addItem}) {
     const [resultIDs, setResultIDs] = useState([])
     const [curData, setCurData] = useState([])
     const [curPg, setCurPg] = useState(1)
+    const [noResults, setNoResults] = useState(false)
     
     const resultsLen = resultIDs.length
 
@@ -18,7 +19,7 @@ export default function MetSearch({addItem}) {
         setCurSearch(search)
         setCurPg(1)
         const res = await metAPI.search(search)
-        await handleSearchResults(res) 
+        await handleSearchResults(res)
     }
 
     async function handleFilterSearch(text, filter) {
@@ -29,16 +30,19 @@ export default function MetSearch({addItem}) {
     }
 
     async function handleSearchResults(res) {
-        const data = await metAPI.getArrDetails(res, curPg, resultsPerPg)
-        setResultIDs(data.objectIDs)
-        setCurData(data.results)
-        setCurPg(1)
-        setSearch("");
+        if (res) {
+            const data = await metAPI.getArrDetails(res, curPg, resultsPerPg)
+            setResultIDs(data.objectIDs)
+            setCurData(data.results)
+        } else {
+            setNoResults(true)
+            setCurPg(1)
+            setSearch("");
+        }
     }
 
     async function handlePageTurn(num) {
         setCurData([])
-        console.log('pg turn: ', num)
         const data = await metAPI.getArrDetails(resultIDs, num, resultsPerPg)
         setResultIDs(data.objectIDs)
         setCurData(data.results)
@@ -72,7 +76,7 @@ export default function MetSearch({addItem}) {
             
             { curSearch && 
             <>
-                <SearchResults curData={curData} curPg={curPg} addItem={addItem}/>
+                <SearchResults curData={curData} addItem={addItem} noResults={noResults}/>
                 <MetPagination curPg={curPg} handlePageTurn={handlePageTurn} resultsLen={resultsLen} resultsPerPg={resultsPerPg}/>
             </> }
         </div>

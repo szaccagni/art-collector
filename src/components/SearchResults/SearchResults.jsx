@@ -1,15 +1,19 @@
 import './SearchResults.css'
 import SearchResultCard from '../SearchResultCard/SearchResultCard'
 
-export default function SearchReults({curData, addItem}) {
+export default function SearchReults({curData, addItem, noResults}) {
     return ( 
         <>
             <div className='search-results'>
+                {noResults ? <div className='search-results-loading'>no results found</div> : ''}
                 {curData.length ? 
                     <>
-                        {curData.map(( result, idx) => <SearchResultCard result={result} key={idx} addItem={addItem}/>)}
+                        {curData.map((result, idx) => <SearchResultCard result={result} key={idx} addItem={addItem}/>)}
                     </>
-                :  <div className='search-results-loading' >results loading...</div>
+                : 
+                    <>
+                        {noResults ? '': <div className='search-results-loading'>results loading...</div>}
+                    </> 
                 }
             </div>   
         </>   
