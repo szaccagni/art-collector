@@ -17,10 +17,11 @@ export default function App() {
   useEffect( function () {
     getBoards()
     setShowBoardComponent('index')
+    setActive('index')
   }, [user])
 
   async function getBoards() {
-    const userBoards = await boardAPI.getBoards()
+    const userBoards = user ? await boardAPI.getBoards() : []
     setBoards(userBoards)
   }
 
