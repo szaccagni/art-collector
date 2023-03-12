@@ -25,14 +25,17 @@ export default function RijksSearch({addItem}) {
         setTotalResults(res.totalCount)
     }
 
-    function handlePageTurn() {
-        console.log('pg turn')
+    async function handlePageTurn(pg) {
+        const res = await rijksAPI.search(curSearch,resultsPerPg,pg)
+        setCurData(res.curData)
+        setTotalResults(res.totalCount)
+        setCurPg(pg)
     }
 
     return (
         <div className='rijks-search-container'>
             <div className='rijks-search-bar-container'>
-                <div><img src='/Rijksmuseum_Logo.png'></img></div>
+                <div><img src='/Rijksmuseum_Logo.png' alt='rijks logo'></img></div>
                 <div className='rijks-search-bar flex-container'>
                     <input
                         value={search} 
@@ -46,7 +49,7 @@ export default function RijksSearch({addItem}) {
             <>
                 <div className='rijks-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>
                 <SearchResults curData={curData} curPg={curPg} addItem={addItem}/>
-                <RijksPagination curPg={curPg} totalResults={totalResults} handlePageTurn={handlePageTurn}/>
+                <RijksPagination curPg={curPg} totalResults={totalResults} resultsPerPg={resultsPerPg} handlePageTurn={handlePageTurn}/>
             </> }
         </div>
     )

@@ -1,8 +1,7 @@
 
 .pagination-active-btn {
-    font-family: proxima-nova-b;
-    border: 1px solid black !important;
-    border-radius: 5px;
+    background-color: var(--dark-green) !important;
+    color: white;
 }
 
 .pagination-container {
@@ -16,6 +15,13 @@
     font-size: 16px;
     cursor: pointer;
     margin: 0 5px 0 0;
+    padding: 7px 14px;
+}
+
+.pagination-container button:hover {
+    font-family: proxima-nova-b !important;
+    background-color: var(--dark-green) !important;
+    color: white;
 }
 
 .pagination-container button:not(:first-child) {

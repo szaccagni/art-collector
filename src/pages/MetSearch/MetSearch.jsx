@@ -5,7 +5,7 @@ import SearchResults from '../../components/SearchResults/SearchResults'
 import Pagination from '../../components/Pagination/Pagination'
 
 export default function MetSearch({addItem}) {
-    const [resultsPerPg, setResultsPerPg] = useState(12)
+    const [resultsPerPg, setResultsPerPg] = useState(20)
     const [search, setSearch] = useState('')
     const [curSearch, setCurSearch] = useState('')
     const [resultIDs, setResultIDs] = useState([])
