@@ -3,7 +3,6 @@ import sendRequest from './send-request';
 const BASE_URL = '/api/boards'
 
 export async function addItem(boardId, item) {
-    console.log(boardId, item)
     return sendRequest(`${BASE_URL}/${boardId}/items`, 'POST', {item})
 }
 

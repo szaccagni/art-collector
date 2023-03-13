@@ -1,8 +1,7 @@
 import './Pagination.css'
 import { useState , useEffect } from 'react'
 
-export default function MetPagination({curPg, handlePageTurn, resultsLen, resultsPerPg}) {
-
+export default function Pagination({curPg, handlePageTurn, resultsLen, resultsPerPg}) {
     const totalPages = Math.ceil(resultsLen / resultsPerPg)
     const [pages, setPages] = useState(generatePages())
 

@@ -2,7 +2,7 @@ import './RijksSearch.css'
 import {useState} from 'react'
 import * as rijksAPI from '../../utilities/rijks-api'
 import SearchResults from '../../components/SearchResults/SearchResults'
-import RijksPagination from '../../components/Pagination/RijksPagination'
+import Pagination from '../../components/Pagination/Pagination'
 
 export default function RijksSearch({addItem}) {
     const [search, setSearch] = useState('')
@@ -31,6 +31,7 @@ export default function RijksSearch({addItem}) {
     }
 
     async function handlePageTurn(pg) {
+        setCurData([])
         const res = await rijksAPI.search(curSearch,resultsPerPg,pg)
         setCurData(res.curData)
         setTotalResults(res.totalCount)
@@ -54,7 +55,7 @@ export default function RijksSearch({addItem}) {
             <>
                 <div className='rijks-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>
                 <SearchResults curData={curData} addItem={addItem} noResults={noResults}/>
-                <RijksPagination curPg={curPg} totalResults={totalResults} resultsPerPg={resultsPerPg} handlePageTurn={handlePageTurn}/>
+                <Pagination curPg={curPg} resultsLen={totalResults} resultsPerPg={resultsPerPg} handlePageTurn={handlePageTurn}/>
             </> }
         </div>
     )

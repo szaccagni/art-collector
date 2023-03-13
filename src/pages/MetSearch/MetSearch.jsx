@@ -2,7 +2,7 @@ import './MetSearch.css'
 import {useState} from 'react'
 import * as metAPI from '../../utilities/met-api'
 import SearchResults from '../../components/SearchResults/SearchResults'
-import MetPagination from '../../components/Pagination/MetPagination'
+import Pagination from '../../components/Pagination/Pagination'
 
 export default function MetSearch({addItem}) {
     const [resultsPerPg, setResultsPerPg] = useState(20)
@@ -12,12 +12,16 @@ export default function MetSearch({addItem}) {
     const [curData, setCurData] = useState([])
     const [curPg, setCurPg] = useState(1)
     const [noResults, setNoResults] = useState(false)
-    
-    const resultsLen = resultIDs.length
+    const [resultsLen, setResultsLen] = useState(0)
+
 
     async function handleSearch() {
+        setCurData([])
         setCurSearch(search)
         setCurPg(1)
+        setSearch("")
+        setNoResults(false)
+        setResultsLen(0)
         const res = await metAPI.search(search)
         await handleSearchResults(res)
     }
@@ -25,15 +29,16 @@ export default function MetSearch({addItem}) {
     async function handleFilterSearch(text, filter) {
         setCurSearch(`${search} (${text})`)
         setCurPg(1)
+        setSearch("")
         const res = await metAPI.filterSearch(filter, search)
         await handleSearchResults(res)         
     }
 
     async function handleSearchResults(res) {
-        setSearch("")
         if (res) {
-            const data = await metAPI.getArrDetails(res, curPg, resultsPerPg)
+            const data = await metAPI.getArrDetails(res, 1, resultsPerPg)
             setResultIDs(data.objectIDs)
+            setResultsLen(data.objectIDs.length)
             setCurData(data.results)
         } else {
             setNoResults(true)
@@ -45,6 +50,7 @@ export default function MetSearch({addItem}) {
         setCurData([])
         const data = await metAPI.getArrDetails(resultIDs, num, resultsPerPg)
         setResultIDs(data.objectIDs)
+        setResultsLen(data.objectIDs.length)
         setCurData(data.results)
         setCurPg(num)
     }
@@ -77,7 +83,7 @@ export default function MetSearch({addItem}) {
             { curSearch && 
             <>
                 <SearchResults curData={curData} addItem={addItem} noResults={noResults}/>
-                <MetPagination curPg={curPg} handlePageTurn={handlePageTurn} resultsLen={resultsLen} resultsPerPg={resultsPerPg}/>
+                <Pagination curPg={curPg} handlePageTurn={handlePageTurn} resultsLen={resultsLen} resultsPerPg={resultsPerPg}/>
             </> }
         </div>
     )
