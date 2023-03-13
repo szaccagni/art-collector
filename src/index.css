@@ -42,7 +42,7 @@ body {
 
 .btn2 {
     background-color: var(--light-grey);
-    border: 1px var(--light-grey) solid !important;
+    border: 1px var(--light-grey) solid ;
     color: #4a4a4a;
 }
 
