@@ -29,8 +29,9 @@ export async function getArrDetails(objectIDs, curPg, resultsPerPg) {
             }            
         }
     } else if ( curPg < totalPages) {
-        while (results.length < resultsPerPg) {
+        while (results.length < resultsPerPg && ((start+count) < objectIDs.length)) {
             const id = objectIDs[(start+count)]
+            console.log((start+count), objectIDs.length)
             const details = await getObjDetails(id)
             if (details.primaryImage !== '' && details.primaryImage) {
                 results.push(details)
