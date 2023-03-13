@@ -69,7 +69,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
 
             <div className='board-detail-right'>
                 {showComponets === 'web' ? <ItemForm addItem={addItem} /> : '' }
-                {showComponets === 'met' ? <MetSearch addItem={addItem} /> : '' }
+                {showComponets === 'met' ? <MetSearch addItem={addItem} quickAddItem={quickAddItem} /> : '' }
                 {showComponets === 'rijks' ? <RijksSearch addItem={addItem} quickAddItem={quickAddItem}/> : '' }
                 {showComponets !== 'web' && showComponets !== 'met' && showComponets !== 'rijks' ? 
                     <div className='board-imgs-container'>

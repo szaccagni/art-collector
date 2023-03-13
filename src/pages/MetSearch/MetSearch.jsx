@@ -4,7 +4,7 @@ import * as metAPI from '../../utilities/met-api'
 import SearchResults from '../../components/SearchResults/SearchResults'
 import Pagination from '../../components/Pagination/Pagination'
 
-export default function MetSearch({addItem}) {
+export default function MetSearch({addItem, quickAddItem}) {
     const [resultsPerPg, setResultsPerPg] = useState(20)
     const [search, setSearch] = useState('')
     const [curSearch, setCurSearch] = useState('')
@@ -82,7 +82,7 @@ export default function MetSearch({addItem}) {
             
             { curSearch && 
             <>
-                <SearchResults curData={curData} addItem={addItem} noResults={noResults}/>
+                <SearchResults curData={curData} addItem={addItem} noResults={noResults} quickAddItem={quickAddItem}/>
                 <Pagination curPg={curPg} handlePageTurn={handlePageTurn} resultsLen={resultsLen} resultsPerPg={resultsPerPg}/>
             </> }
         </div>

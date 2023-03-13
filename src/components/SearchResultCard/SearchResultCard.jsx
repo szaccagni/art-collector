@@ -4,6 +4,8 @@ import {useState} from 'react'
 export default function SearchResultCard({result, addItem, quickAddItem}) {
     const [imgClass, setImgClass] = useState('')
     const [buttonClass, setButtonClass] = useState('hide-btn')
+    const [quickAddClass, setQuickAddClass] = useState('btn btn2')
+    const [addedClass, setAddedClass] = useState('hide-btn')
 
     const itemData = {
         apiID: result.objectID,
@@ -22,6 +24,12 @@ export default function SearchResultCard({result, addItem, quickAddItem}) {
         setButtonClass('hide-btn')
     }
 
+    function quickAdd() {
+        setQuickAddClass('hide-btn')
+        quickAddItem(itemData)
+        setAddedClass('added-note')
+    }
+
     return (
         <div className='search-result-card'>
             <div className='result-title'>
@@ -30,8 +38,9 @@ export default function SearchResultCard({result, addItem, quickAddItem}) {
             </div>
             <span><img className={imgClass} src={itemData.url} alt={itemData.title} onMouseEnter={handleHover} onMouseLeave={handleMouseLeave}></img></span>
             <span className={buttonClass}>
-                <button className='btn btn2' onMouseEnter={handleHover} onClick={() => addItem(itemData)}> add </button>
-                <button className='btn btn2' onMouseEnter={handleHover} onClick={() => quickAddItem(itemData)}> quick add </button>
+                <button className={quickAddClass} onMouseEnter={handleHover} onClick={() => addItem(itemData)}> add and return to board </button>
+                <button className={quickAddClass} onMouseEnter={handleHover} onClick={quickAdd}> quick add </button>
+                <div className={addedClass} onMouseEnter={handleHover}>added!</div>
             </span>
         </div>
     )

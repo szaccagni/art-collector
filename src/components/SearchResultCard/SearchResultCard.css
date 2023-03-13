@@ -41,3 +41,11 @@
     flex-wrap: wrap;
     align-items: center;
 }
+
+.added-note {
+    background-color: var(--light-grey);
+    color: var(--dark-green);
+    border-radius: 8px;
+    font-size: 12px;
+    padding: 7px 12px;
+}

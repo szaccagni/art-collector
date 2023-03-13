@@ -41,7 +41,8 @@ body {
 }
 
 .btn2 {
-    background-color: #f9f9f9;
+    background-color: var(--light-grey);
+    border: 1px var(--light-grey) solid !important;
     color: #4a4a4a;
 }
 
