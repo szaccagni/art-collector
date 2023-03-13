@@ -2,6 +2,7 @@ const Board = require('../../models/board')
 
 module.exports = {
     create,
+    show,
     index,
     addItem,
     removeItem,
@@ -11,6 +12,11 @@ module.exports = {
 
 async function create(req,res) {
     const board = await Board.create(req.body.board)
+    res.json(board)
+}
+
+async function show(req, res) {
+    const board = await Board.findById(req.params.id)
     res.json(board)
 }
 

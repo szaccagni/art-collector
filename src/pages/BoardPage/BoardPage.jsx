@@ -10,12 +10,7 @@ export default function BoardPage({user, boards, showBoardComponent, curBoard, s
 
     return (
         <>
-            { showBoardComponent === 'new board' ? 
-                <div className='board-detail flex-container'>
-                    <div className='board-detail-left'>
-                        <BoardForm user={user} board={blankBoard} boardFunctions={boardFunctions}/> 
-                    </div>
-                </div>
+            { showBoardComponent === 'new board' ? <BoardForm user={user} board={blankBoard} boardFunctions={boardFunctions}/> 
             : '' }
 
             { showBoardComponent === 'index' ?  <BoardsIndex boards={boards} setActive={setActive} boardFunctions={boardFunctions}/> : ''}  

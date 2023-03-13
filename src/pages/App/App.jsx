@@ -53,12 +53,18 @@ export default function App() {
     setShowBoardComponent('index')
   }
 
+  async function getOneBoard(id) {
+    const board = await boardAPI.getOneBoard(id)
+    setCurBoard(board)
+  }
+
   const boardFunctions = {
     getBoards: getBoards,
     addBoard: addBoard,
     showBoard: showBoard,
     updateBoard: updateBoard,
-    deleteBoard:deleteBoard
+    deleteBoard: deleteBoard,
+    getOneBoard: getOneBoard
   }
 
   return (

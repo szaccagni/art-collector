@@ -1,7 +1,7 @@
 import './SearchResultCard.css'
 import {useState} from 'react'
 
-export default function SearchResultCard({result, addItem}) {
+export default function SearchResultCard({result, addItem, quickAddItem}) {
     const [imgClass, setImgClass] = useState('')
     const [buttonClass, setButtonClass] = useState('hide-btn')
 
@@ -29,7 +29,10 @@ export default function SearchResultCard({result, addItem}) {
                 {itemData.artist !== '' ?  `by  ${itemData.artist}` : ''}</span>
             </div>
             <span><img className={imgClass} src={itemData.url} alt={itemData.title} onMouseEnter={handleHover} onMouseLeave={handleMouseLeave}></img></span>
-            <span className={buttonClass}><button className='btn btn2' onMouseEnter={handleHover} onClick={() => addItem(itemData)}> add </button></span>
+            <span className={buttonClass}>
+                <button className='btn btn2' onMouseEnter={handleHover} onClick={() => addItem(itemData)}> add </button>
+                <button className='btn btn2' onMouseEnter={handleHover} onClick={() => quickAddItem(itemData)}> quick add </button>
+            </span>
         </div>
     )
 }

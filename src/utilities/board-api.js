@@ -22,6 +22,10 @@ export async function getBoards() {
     return sendRequest(`${BASE_URL}`);    
 }
 
+export async function getOneBoard(boardId) {
+    return sendRequest(`${BASE_URL}/${boardId}`);    
+}
+
 export async function deleteBoard(boardId) {
     return sendRequest(`${BASE_URL}/${boardId}`, 'DELETE')
 }

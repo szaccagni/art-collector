@@ -4,7 +4,7 @@ import * as rijksAPI from '../../utilities/rijks-api'
 import SearchResults from '../../components/SearchResults/SearchResults'
 import Pagination from '../../components/Pagination/Pagination'
 
-export default function RijksSearch({addItem}) {
+export default function RijksSearch({addItem, quickAddItem}) {
     const [search, setSearch] = useState('')
     const [resultsPerPg, setResultsPerPg] = useState(20)
     const [curPg, setCurPg] = useState(1)
@@ -54,7 +54,7 @@ export default function RijksSearch({addItem}) {
             { curSearch && 
             <>
                 <div className='rijks-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>
-                <SearchResults curData={curData} addItem={addItem} noResults={noResults}/>
+                <SearchResults curData={curData} addItem={addItem} noResults={noResults} quickAddItem={quickAddItem}/>
                 <Pagination curPg={curPg} resultsLen={totalResults} resultsPerPg={resultsPerPg} handlePageTurn={handlePageTurn}/>
             </> }
         </div>

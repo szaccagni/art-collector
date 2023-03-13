@@ -1,3 +1,13 @@
+.board-form {
+    justify-content: center;
+    align-items: center;
+    height: 60vh;
+}
+
+.board-form div {
+    width: 30%;
+}
+
 .board-form-name {
     font-family: archivo-black;
     font-size: 45px;    

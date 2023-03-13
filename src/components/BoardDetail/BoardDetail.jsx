@@ -20,9 +20,18 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
         boardFunctions.showBoard(updatedBoard)
     }
 
+    async function quickAddItem(item) {
+        await boardAPI.addItem(curBoard._id, item)
+    }
+
     async function removeItem(item) {
         const updatedBoard = await boardAPI.removeItem(item._id)
         boardFunctions.showBoard(updatedBoard)
+    }
+
+    async function reloadBoard() {
+        boardFunctions.getOneBoard(curBoard._id)
+        setShowComponents('init')
     }
 
     return (
@@ -30,7 +39,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
             <div className='board-detail-left'>
                 { showComponets !== 'edit'? 
                     <div className='board-detail-info'>
-                        <a onClick={() => setShowComponents('init')}><div className='board-detail-title'>{curBoard.name}</div></a>
+                        <a onClick={reloadBoard}><div className='board-detail-title'>{curBoard.name}</div></a>
                         <div className='board-detail-description'>{curBoard.description}</div>
                     </div>
                 : ''}
@@ -59,9 +68,9 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
             </div>
 
             <div className='board-detail-right'>
-                {showComponets === 'web' ? <ItemForm addItem={addItem}/> : '' }
-                {showComponets === 'met' ? <MetSearch addItem={addItem}/> : '' }
-                {showComponets === 'rijks' ? <RijksSearch addItem={addItem}/> : '' }
+                {showComponets === 'web' ? <ItemForm addItem={addItem} /> : '' }
+                {showComponets === 'met' ? <MetSearch addItem={addItem} /> : '' }
+                {showComponets === 'rijks' ? <RijksSearch addItem={addItem} quickAddItem={quickAddItem}/> : '' }
                 {showComponets !== 'web' && showComponets !== 'met' && showComponets !== 'rijks' ? 
                     <div className='board-imgs-container'>
                         {curBoard.items.map((item, idx) => 

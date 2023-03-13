@@ -33,12 +33,15 @@ export default function BoardForm({user, board, boardFunctions}) {
     }
 
     return (
-        <div className='board-form'>
-            <input className='board-form-name' name="name" placeholder="name" value={formData.name} onChange={handleChange}></input>
-            <input className='board-form-description' name="description" placeholder="description" value={formData.description} onChange={handleChange}></input>
+        <div className='board-form flex-container'>
+            <div>
+                <input className='board-form-name' name="name" placeholder="name" value={formData.name} onChange={handleChange}></input>
+                <input className='board-form-description' name="description" placeholder="description" value={formData.description} onChange={handleChange}></input>
+                
+                <button className='btn' onClick={formType === 'new' ? handleSave : handleUpdate}>save</button>
+                {formType === 'update' ? <button className='btn delete-board-btn' onClick={handleDelete}>delete</button> : ''}
+            </div>
             
-            <button className='btn' onClick={formType === 'new' ? handleSave : handleUpdate}>save</button>
-            {formType === 'update' ? <button className='btn delete-board-btn' onClick={handleDelete}>delete</button> : ''}
         </div>
     )
 }

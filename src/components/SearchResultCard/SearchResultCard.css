@@ -30,6 +30,8 @@
 
 .search-result-btn-container {
     position: absolute;
+    display: flex;
+    flex-direction: column;
 }
 
 .result-title {
