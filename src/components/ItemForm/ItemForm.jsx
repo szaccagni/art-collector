@@ -16,10 +16,14 @@ export default function ItemForm({addItem}) {
     }
 
     return (
-        <div className='item-form-container flex-container'>
-            <input name='title' placeholder='title' value={formData.title} onChange={handleChange}></input>
-            <input name='url' placeholder='url' value={formData.url} onChange={handleChange}></input>
-            <button className='btn' onClick={() => addItem(formData)}>add to board</button>
+        <div className='item-form-container'>
+            <div className='item-form-inputs'>
+                <input name='title' placeholder='title' value={formData.title} onChange={handleChange}></input>
+                <input name='url' placeholder='url' value={formData.url} onChange={handleChange}></input>
+            </div>
+            <div>
+                <button className='btn' onClick={() => addItem(formData)}>add to board</button>
+            </div>
         </div>
     )
 }

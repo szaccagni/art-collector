@@ -35,7 +35,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
     }
 
     return (
-        <div className='board-detail flex-container'>
+        <div className='board-detail'>
             <div className='board-detail-left'>
                 { showComponets !== 'edit'? 
                     <div className='board-detail-info'>

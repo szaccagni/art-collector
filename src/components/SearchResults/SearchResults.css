@@ -7,3 +7,16 @@
     padding: 15px;
     font-size:22px;
 }
+
+
+@media screen and (max-width: 520px) {
+    .search-results {
+        columns: 1;
+    }
+}
+
+@media screen and (max-width: 800px) and (min-width:520px){
+    .search-results {
+        columns: 2;
+    }
+}

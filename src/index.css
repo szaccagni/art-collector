@@ -94,7 +94,7 @@ body {
     color: var(--red);
 }
 
-@media screen and (max-width: 430px) {
+@media screen and (max-width: 520px) {
     .welcome {
         display: none !important;
     }

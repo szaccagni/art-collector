@@ -1,5 +1,6 @@
 .board-detail {
     padding: 15px;
+    display: flex;
 }
 
 .board-detail-left {
@@ -75,4 +76,20 @@
 
 .board-detail-img-container img {
     width: 100%;
+}
+
+@media screen and (max-width: 620px) {
+    .board-imgs-container {
+        columns: 2;
+    }    
+}
+
+@media screen and (max-width: 1020px) {
+    .board-detail {
+        display: block;
+    }    
+    .board-detail-left {
+        width: 100%;
+        margin-bottom: 15px;
+    }
 }

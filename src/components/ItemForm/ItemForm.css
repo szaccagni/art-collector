@@ -1,9 +1,37 @@
+.item-form-container {
+    display: flex;
+    box-sizing: border-box;
+}
+
 .item-form-container input {
-    margin-right: 5px;
+    margin: 15px 5px 0 0;
     font-family: archivo-black;
     font-size: 20px;  
 }
 
 .item-form-container button {
-    margin: 0;
+    margin: 15px 0;
+}
+
+
+@media screen and (max-width: 620px) {
+    .item-form-container {
+        display: block;
+    }
+    
+    .item-form-inputs input {
+        width: 100%;
+        box-sizing: border-box;
+    }
+}
+
+@media screen and (max-width: 800px) and (min-width: 620px) {
+    .item-form-container {
+        display: block;
+    }
+
+    .item-form-inputs input {
+        width: 80%;
+        box-sizing: border-box;
+    }
 }

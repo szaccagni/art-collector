@@ -57,18 +57,17 @@ export default function MetSearch({addItem, quickAddItem}) {
 
     return( 
         <div className='met-search-container'>
-            <div className='met-search-bar flex-container'>
+            <div className='met-search-bar'>
                 <div className='met-search-title'><img src='/met-logo.jpeg' alt='met logo'></img></div>
-                <div>
-                    <div className='met-search-text-container'>
-                        { curSearch && <div className='met-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>}
-                    </div>
-                    <div className='met-search-bar-form'>
+                <div className='met-search-input'>
+                    <div className='met-search'>
                         <input 
-                            value={search} 
-                            onChange={ e => setSearch(e.target.value)}
-                            required
-                        ></input> 
+                        value={search} 
+                        onChange={ e => setSearch(e.target.value)}
+                        required
+                    ></input> 
+                    </div>
+                    <div className='met-search-buttons'>
                         <button className='btn' onClick={handleSearch}>general search</button>
                         <button className='btn'onClick={() => handleFilterSearch('highlights only', 'isHighlight')}>search highlights</button>
                         <button className='btn'onClick={() => handleFilterSearch('titles only', 'title')}>search titles</button>
@@ -76,7 +75,9 @@ export default function MetSearch({addItem, quickAddItem}) {
                         <button className='btn'onClick={() => handleFilterSearch('art on view only', 'isOnView')}>search art on view</button>
                     </div>
                 </div>
-
+            </div>
+            <div className='met-search-text-container'>
+                { curSearch && <div className='met-search-text'><span>showing results for <span className='bold'>{curSearch}</span></span></div>}
             </div>
 
             
