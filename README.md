@@ -24,6 +24,7 @@ This web app allows you to stretch your creative muscles and try your hand at cu
 * Metropolitan Museum of Art API
 
 # Next Steps (include but are not limited to)
+* Improve mobile experience 
 * Display an indicator on the images that have already been added to the current board while searching for new ones
 * Create a social aspect where you can friend/follow other users and comment on their boards
 * Allow users to rerarrange the order of their boards
