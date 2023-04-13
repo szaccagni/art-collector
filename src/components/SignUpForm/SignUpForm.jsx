@@ -46,9 +46,12 @@ export default class SignUpForm extends Component {
             <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} placeholder='confirm' required />
             <button className='btn' type="submit" disabled={disable}>SIGN UP</button>
           </form>
+          <p className="error-message">&nbsp;{this.state.error}</p>
         </div>
-        <button className='btn login-btn'type="submit" onClick={() => this.props.setShowSignUp(false)}>LOG IN</button>
-        <p className="error-message">&nbsp;{this.state.error}</p>
+        <div className="login-container">
+          <div>RETURNING USERS: </div>
+          <button className='btn login-btn'type="submit" onClick={() => this.props.setShowSignUp(false)}>LOG IN</button>
+        </div>
       </div>
     );
   }

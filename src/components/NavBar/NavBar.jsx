@@ -23,7 +23,7 @@ export default function NavBar({ user, setUser, active, setActive, setShowBoardC
 
     return (
         <nav className="NavBar">
-            <div><div>Welcome, {user.name}</div></div>
+            <div className='welcome'><div>Welcome, {user.name}</div></div>
             <div>
                 <div>
                     <a onClick={() => handleClick('index')} className='nav-link'  
@@ -31,7 +31,7 @@ export default function NavBar({ user, setUser, active, setActive, setShowBoardC
                 </div>
                 <div>
                     <a onClick={() => handleClick('new board')} className='nav-link'
-                        style={ active === 'new board' ? activeStyle : {} }>Create a New Board</a>
+                        style={ active === 'new board' ? activeStyle : {} }>New Board</a>
                 </div>
                 <div><Link to="" onClick={handleLogOut} className='nav-link'>Log Out</Link></div>
             </div>

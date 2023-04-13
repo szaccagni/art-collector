@@ -36,9 +36,12 @@ export default function LoginForm({ setUser, setShowSignUp }) {
           <input type="password" name="password" value={credentials.password} onChange={handleChange} placeholder='password' required />
           <button className='btn' type="submit">LOG IN</button>
         </form>
+        <p className="error-message">&nbsp;{error}</p>
       </div>
-      <button className='btn signup-btn'type="submit" onClick={() => setShowSignUp(true)}>SIGN UP</button>
-      <p className="error-message">&nbsp;{error}</p>
+      <div className='sign-up-container'>
+        <div>DON'T HAVE A ACCOUNT?</div>
+        <button className='btn signup-btn'type="submit" onClick={() => setShowSignUp(true)}>SIGN UP</button>
+      </div>
     </div>
   );
 }

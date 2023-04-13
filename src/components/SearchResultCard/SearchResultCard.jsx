@@ -33,7 +33,7 @@ export default function SearchResultCard({result, addItem, quickAddItem}) {
     return (
         <div className='search-result-card'>
             <div className='result-title'>
-                <span><span className='bold'>{itemData.title}</span> &nbsp;
+                <span><span className='bold'>{itemData.title}</span> &;
                 {itemData.artist !== '' ?  `by  ${itemData.artist}` : ''}</span>
             </div>
             <span><img className={imgClass} src={itemData.url} alt={itemData.title} onMouseEnter={handleHover} onMouseLeave={handleMouseLeave}></img></span>

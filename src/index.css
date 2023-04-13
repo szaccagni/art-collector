@@ -93,3 +93,13 @@ body {
 .error-message {
     color: var(--red);
 }
+
+@media screen and (max-width: 430px) {
+    .welcome {
+        display: none !important;
+    }
+
+    .NavBar {
+        font-size: 15px;
+    }
+}

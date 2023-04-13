@@ -8,3 +8,9 @@
     justify-content: space-evenly;
     justify-items: center;
 }
+
+@media screen and (max-width: 1200px) {
+    .boards-index {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

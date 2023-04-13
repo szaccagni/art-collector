@@ -28,6 +28,11 @@
     margin: 15px 0;
 }
 
+.signup-form-conainter .error-message {
+    text-align: center;
+}
+
 .login-btn {
-    width: 19.3% !important;
+    width: 100% !important;
+    font-size: 30px !important;
 }

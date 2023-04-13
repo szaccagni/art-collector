@@ -28,6 +28,15 @@
     margin: 15px 0;
 }
 
+.login-form-container .error-message {
+    text-align: center;
+}
+
 .signup-btn {
-    width: 19.3% !important;
+    width: 100% !important;
+    font-size: 30px !important;
+}
+
+.sign-up-container {
+    text-align: center;
 }
