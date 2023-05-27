@@ -1,15 +1,13 @@
-const BASE_URL = 'https://collectionapi.metmuseum.org/public/collection/v1'
+import sendRequest from './send-request';
+
+const BASE_URL = '/api/met'
 
 export async function search(term) {
-    let endpoint = `${BASE_URL}/search?hasImages=true&q=${term}`
-    let response = await fetch(endpoint).then((res) => res.json());
-    return response.objectIDs
+    return sendRequest(`${BASE_URL}/${term}`)
 }
 
 export async function filterSearch(filter, term) {
-    let endpoint = `${BASE_URL}/search?${filter}=true&hasImages=true&q=${term}`
-    let response = await fetch(endpoint).then((res) => res.json());
-    return response.objectIDs
+    return sendRequest(`${BASE_URL}/filter/${filter}/${term}`)
 }
 
 export async function getArrDetails(objectIDs, curPg, resultsPerPg) {
@@ -31,7 +29,6 @@ export async function getArrDetails(objectIDs, curPg, resultsPerPg) {
     } else if ( curPg < totalPages) {
         while (results.length < resultsPerPg && ((start+count) < objectIDs.length)) {
             const id = objectIDs[(start+count)]
-            console.log((start+count), objectIDs.length)
             const details = await getObjDetails(id)
             if (details.primaryImage !== '' && details.primaryImage) {
                 results.push(details)
@@ -49,7 +46,5 @@ export async function getArrDetails(objectIDs, curPg, resultsPerPg) {
 }
 
 export async function getObjDetails(id) {
-    let endpoint = `${BASE_URL}/objects/${id}`
-    let response = await fetch(endpoint).then((res) => res.json());
-    return response
+    return sendRequest(`${BASE_URL}/objects/${id}`)
 }
