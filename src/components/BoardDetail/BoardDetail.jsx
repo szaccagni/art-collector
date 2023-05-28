@@ -15,7 +15,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
         console.log(curBoard)
         setShowComponents('init')
         if (!curBoard) {
-            navigate('/boards');
+            navigate('/boards/all');
         }
     }, [curBoard])
     

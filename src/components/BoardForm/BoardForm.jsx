@@ -1,13 +1,9 @@
 import './BoardForm.css'
-import {useState, useEffect} from 'react'
+import {useState} from 'react'
 
 export default function BoardForm({user, board, boardFunctions}) {
     const [formData, setFormData] = useState(board)   
     const formType = board.name !== '' ? 'update' : 'new' 
-
-    // useEffect( function() {
-    //     boardFunctions.clearCurrentBoard()
-    // }, [])
 
     function handleChange(e) {
         const newFormData = {
