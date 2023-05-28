@@ -1,8 +1,6 @@
 import './BoardDetail.css'
-
 import {useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-
 import * as boardAPI from '../../utilities/board-api'
 import ItemForm from '../ItemForm/ItemForm'
 import MetSearch from '../../pages/MetSearch/MetSearch'

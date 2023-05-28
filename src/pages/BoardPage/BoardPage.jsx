@@ -6,7 +6,7 @@ import BoardsIndex from "../../components/BoardsIndex/BoardsIndex"
 import BoardDetail from "../../components/BoardDetail/BoardDetail"
 
 
-export default function BoardPage({user, boards, showBoardComponent, setActive, setShowBoardComponent, getBoards}) {
+export default function BoardPage({user, boards, setActive, getBoards}) {
     const [ curBoard, setCurBoard ] = useState(getCurBoard())
 
     const navigate = useNavigate()
@@ -32,13 +32,11 @@ export default function BoardPage({user, boards, showBoardComponent, setActive, 
         if (res) {
           showBoard(res)
         }
-        setActive('')
         getBoards()
     }
     
     function showBoard(board) {
         setCurBoard(board)
-        // setShowBoardComponent('board deatil')
         localStorage.setItem('curBoard', JSON.stringify(board));
         navigate('/boards/detail')
     }
@@ -54,7 +52,6 @@ export default function BoardPage({user, boards, showBoardComponent, setActive, 
     async function deleteBoard(id) {
         await boardAPI.deleteBoard(id)
         getBoards()
-        setShowBoardComponent('index')
     }
     
     async function getOneBoard(id) {
@@ -73,23 +70,12 @@ export default function BoardPage({user, boards, showBoardComponent, setActive, 
 
     return (
         <>
-            {/* { showBoardComponent === 'new board' ? 
-                <div className="flex-container flex-center">
-                    <BoardForm user={user} board={blankBoard} boardFunctions={boardFunctions}/> 
-                </div>
-            : '' } */}
-
-            {/* { showBoardComponent === 'index' ?  <BoardsIndex boards={boards} setActive={setActive} boardFunctions={boardFunctions}/> : ''}   */}
             <Routes>
-                <Route path="/boards" element={<BoardsIndex boards={boards} setActive={setActive} boardFunctions={boardFunctions}/>}></Route>
+                <Route path="/boards/all" element={<BoardsIndex boards={boards} setActive={setActive} boardFunctions={boardFunctions}/>}></Route>
                 <Route path="/boards/new" element={<BoardForm user={user} board={blankBoard} boardFunctions={boardFunctions}/>}></Route>
                 <Route path="/boards/detail" element={<BoardDetail user={user} curBoard={curBoard} boardFunctions={boardFunctions}/>}></Route>
-                <Route path="/*" element={<Navigate to="/boards" />}></Route>
+                <Route path="/*" element={<Navigate to="/boards/all" />}></Route>
             </Routes>
-            
-
-            {/* { showBoardComponent === 'board deatil' ? <BoardDetail user={user} curBoard={curBoard} boardFunctions={boardFunctions}/> : ''}  */}
-            
         </>
     )
 }

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
 import * as userService from '../../utilities/users-service' 
 
-export default function NavBar({ user, setUser, active, setActive, setShowBoardComponent, getBoards}) {
+export default function NavBar({ user, setUser, active, setActive, getBoards}) {
     const activeStyle = {
         textDecoration: 'underline',
         color: 'var(--dark-green)',
@@ -18,9 +18,9 @@ export default function NavBar({ user, setUser, active, setActive, setShowBoardC
 
     function handleClick(el) {
         setActive(el)
-        setShowBoardComponent(el)
         getBoards()
-        el === 'index' ? navigate('/boards') : navigate('/boards/new')
+        // el === 'index' ? navigate('/boards') : navigate('/boards/new')
+        navigate(`/boards/${el}`)
     }
 
     return (
@@ -28,12 +28,12 @@ export default function NavBar({ user, setUser, active, setActive, setShowBoardC
             <div className='welcome'><div>Welcome, {user.name}</div></div>
             <div>
                 <div>
-                    <button onClick={() => handleClick('index')} className='nav-link'  
-                        style={ active === 'index' ?  activeStyle : {} }>Boards</button>
+                    <button onClick={() => handleClick('all')} className='nav-link'  
+                        style={ active === 'all' ?  activeStyle : {} }>Boards</button>
                 </div>
                 <div>
-                    <button onClick={() => handleClick('new board')} className='nav-link'
-                        style={ active === 'new board' ? activeStyle : {} }>New Board</button>
+                    <button onClick={() => handleClick('new')} className='nav-link'
+                        style={ active === 'new' ? activeStyle : {} }>New Board</button>
                 </div>
                 <div><Link to="" onClick={handleLogOut} className='nav-link'>Log Out</Link></div>
             </div>

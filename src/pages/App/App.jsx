@@ -8,7 +8,6 @@ import BoardPage from '../BoardPage/BoardPage';
 
 export default function App() {
   const [ user, setUser ] = useState(getUser())
-  const [ showBoardComponent, setShowBoardComponent ] = useState('')
   const [ boards, setBoards ] = useState([])
   const [ active, setActive ] = useState('')
   
@@ -27,8 +26,8 @@ export default function App() {
       {
         user ?
         <>
-          <NavBar user={user} setUser={setUser} active={active} setActive={setActive} setShowBoardComponent={setShowBoardComponent} getBoards={getBoards}/>
-          <BoardPage user={user} boards={boards} showBoardComponent={showBoardComponent} setShowBoardComponent={setShowBoardComponent} setActive={setActive} getBoards={getBoards}/>
+          <NavBar user={user} setUser={setUser} active={active} setActive={setActive} getBoards={getBoards}/>
+          <BoardPage user={user} boards={boards} setActive={setActive} getBoards={getBoards}/>
         </>
         :
         <AuthPage setUser={setUser} />
