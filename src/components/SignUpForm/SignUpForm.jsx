@@ -1,5 +1,4 @@
-import './SignUpForm.css'
-
+import '../../pages/AuthPage/AuthPage.css'
 import { Component } from 'react'
 import { signUp } from '../../utilities/users-service'
 
@@ -37,8 +36,7 @@ export default class SignUpForm extends Component {
   render() {
     const disable = this.state.password !== this.state.confirm;
     return (
-      <div className='signup-form-conainter'>
-        <div className='logo'><img src="/ART-COLLECTOR.png"></img></div>
+      <>
         <div>
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required placeholder='name'/>
@@ -47,13 +45,13 @@ export default class SignUpForm extends Component {
             <input type="password" name="confirm" value={this.state.confirm} onChange={this.handleChange} placeholder='confirm' required />
             <button className='btn' type="submit" disabled={disable}>SIGN UP</button>
           </form>
-          <p className="error-message">&nbsp;{this.state.error}</p>
+          <p className={this.state.error !== '' ? "error-message show" : "error-message"}>{this.state.error}</p>
         </div>
-        <div className="login-container">
+        <div>
           <div>RETURNING USERS: </div>
-          <button className='btn login-btn'type="submit" onClick={() => this.props.setShowSignUp(false)}>LOG IN</button>
+          <button className='btn auth-btn'type="submit" onClick={() => this.props.setShowSignUp(false)}>LOG IN</button>
         </div>
-      </div>
+      </>
     );
   }
 }

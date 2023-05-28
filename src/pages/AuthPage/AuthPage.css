@@ -1,4 +1,4 @@
-.signup-form-conainter {
+.form-container {
     /* height: 100vh; */
     justify-content: center;
     display: flex;
@@ -6,14 +6,23 @@
     flex-direction: column;
 }
 
-.signup-form-conainter form {
+.logo {
+    width: 100%;
+    text-align: center;
+}
+
+.logo img {
+    width: 40%;
+}
+
+.form-container form {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.signup-form-conainter button{
+.form-container button{
     font-family: archivo-black;
     font-size: 25px;   
     width: 60%;
@@ -21,7 +30,7 @@
     cursor: pointer;
 }
 
-.signup-form-conainter input {
+.form-container input {
     font-family: archivo-black;
     font-size: 25px;   
     padding: 5px;
@@ -29,11 +38,23 @@
     margin: 15px 0;
 }
 
-.signup-form-conainter .error-message {
+.error-message {
     text-align: center;
+    display: none;
+    margin-bottom: 2rem;
+    font-weight: bold;
 }
 
-.login-btn {
+.show {
+    display: block;
+}
+
+.auth-btn {
     width: 100% !important;
-    font-size: 20px !important;
+    font-size: 15px !important;
+    margin-top: 5px !important;
+}
+
+.btn-container {
+    text-align: center;
 }

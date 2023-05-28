@@ -1,4 +1,4 @@
-import './LoginForm.css'
+import '../../pages/AuthPage/AuthPage.css'
 import { useState } from 'react';
 import * as usersService from '../../utilities/users-service';
 
@@ -29,20 +29,19 @@ export default function LoginForm({ setUser, setShowSignUp }) {
   }
 
   return (
-    <div className='login-form-container'>
-      <div className='logo'><img src="/ART-COLLECTOR.png"></img></div>
+    <>
       <div>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <input type="text" name="email" value={credentials.email} onChange={handleChange} placeholder='email'required />
           <input type="password" name="password" value={credentials.password} onChange={handleChange} placeholder='password' required />
           <button className='btn' type="submit">LOG IN</button>
         </form>
-        <p className="error-message">&nbsp;{error}</p>
+        <p className={error !== '' ? "error-message show" : "error-message"}>{error}</p>
       </div>
-      <div className='sign-up-container'>
+      <div className='btn-container'>
         <div>DON'T HAVE A ACCOUNT?</div>
-        <button className='btn signup-btn'type="submit" onClick={() => setShowSignUp(true)}>SIGN UP</button>
+        <button className='btn auth-btn'type="submit" onClick={() => setShowSignUp(true)}>SIGN UP</button>
       </div>
-    </div>
+    </>
   );
 }

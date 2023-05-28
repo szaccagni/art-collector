@@ -7,8 +7,11 @@ export default function AuthPage({ setUser }) {
 
     return (
         <main>
-            {showSignUp && <SignUpForm setUser={setUser} setShowSignUp={setShowSignUp} />}
-            {!showSignUp && <LoginForm setUser={setUser} setShowSignUp={setShowSignUp} />}
+            <div className='form-container'>
+                <div className='logo'><img src="/ART-COLLECTOR.png"></img></div>
+                {showSignUp && <SignUpForm setUser={setUser} setShowSignUp={setShowSignUp} />}
+                {!showSignUp && <LoginForm setUser={setUser} setShowSignUp={setShowSignUp} />}
+            </div>
         </main>
     )
 }
