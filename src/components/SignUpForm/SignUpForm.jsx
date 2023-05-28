@@ -38,6 +38,7 @@ export default class SignUpForm extends Component {
     const disable = this.state.password !== this.state.confirm;
     return (
       <div className='signup-form-conainter'>
+        <div className='logo'><img src="/ART-COLLECTOR.png"></img></div>
         <div>
           <form autoComplete="off" onSubmit={this.handleSubmit}>
             <input type="text" name="name" value={this.state.name} onChange={this.handleChange} required placeholder='name'/>

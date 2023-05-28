@@ -30,6 +30,7 @@ export default function LoginForm({ setUser, setShowSignUp }) {
 
   return (
     <div className='login-form-container'>
+      <div className='logo'><img src="/ART-COLLECTOR.png"></img></div>
       <div>
         <form autoComplete="off" onSubmit={handleSubmit}>
           <input type="text" name="email" value={credentials.email} onChange={handleChange} placeholder='email'required />
