@@ -52,6 +52,8 @@ export default function BoardPage({user, boards, setActive, getBoards}) {
     async function deleteBoard(id) {
         await boardAPI.deleteBoard(id)
         getBoards()
+        clearCurrentBoard()
+        navigate('/boards/all')
     }
     
     async function getOneBoard(id) {
@@ -65,7 +67,7 @@ export default function BoardPage({user, boards, setActive, getBoards}) {
         updateBoard: updateBoard,
         deleteBoard: deleteBoard,
         getOneBoard: getOneBoard,
-        clearCurrentBoard: clearCurrentBoard
+        // clearCurrentBoard: clearCurrentBoard
     }    
 
     return (

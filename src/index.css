@@ -60,6 +60,10 @@ body {
     display: flex;
 }
 
+.adjust>.flex-center {
+    height: auto;
+}
+
 .flex-center {
     justify-content: center;
     align-items: center;

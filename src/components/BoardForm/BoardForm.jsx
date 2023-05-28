@@ -5,9 +5,9 @@ export default function BoardForm({user, board, boardFunctions}) {
     const [formData, setFormData] = useState(board)   
     const formType = board.name !== '' ? 'update' : 'new' 
 
-    useEffect( function() {
-        boardFunctions.clearCurrentBoard()
-    }, [])
+    // useEffect( function() {
+    //     boardFunctions.clearCurrentBoard()
+    // }, [])
 
     function handleChange(e) {
         const newFormData = {

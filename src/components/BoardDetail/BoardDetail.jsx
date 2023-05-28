@@ -12,6 +12,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
     const navigate = useNavigate()
 
     useEffect( function() {
+        console.log(curBoard)
         setShowComponents('init')
         if (!curBoard) {
             navigate('/boards');
@@ -34,7 +35,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
     }
 
     async function reloadBoard() {
-        boardFunctions.getOneBoard(curBoard._id)
+        // boardFunctions.getOneBoard(curBoard._id)
         setShowComponents('init')
     }
 
@@ -49,7 +50,7 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
                         <div className='board-detail-description'>{curBoard.description}</div>
                     </div>
                 : ''}
-                { showComponets === 'edit' ? <BoardForm user={user} board={curBoard} boardFunctions={boardFunctions}/>: ''}
+                { showComponets === 'edit' ? <div className='adjust'><BoardForm user={user} board={curBoard} boardFunctions={boardFunctions}/></div>: ''}
                 { showComponets === 'init' ? 
                     <div className='editBtns'>
                         <a onClick={() => setShowComponents('edit')}>Edit</a>
