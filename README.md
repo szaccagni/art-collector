@@ -31,3 +31,4 @@ This web app allows you to stretch your creative muscles and try your hand at cu
 * Allow users to rearrange the position of the art on their boards
 * Improve search filtering capabilities
 * Further leverage the information available by both museum's apis
+* Guest login option
