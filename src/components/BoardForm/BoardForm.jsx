@@ -1,9 +1,13 @@
 import './BoardForm.css'
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 
 export default function BoardForm({user, board, boardFunctions}) {
     const [formData, setFormData] = useState(board)   
     const formType = board.name !== '' ? 'update' : 'new' 
+
+    useEffect( function() {
+        boardFunctions.clearCurrentBoard()
+    }, [])
 
     function handleChange(e) {
         const newFormData = {
@@ -33,12 +37,14 @@ export default function BoardForm({user, board, boardFunctions}) {
     }
 
     return (
-        <div className='board-form'>
-            <input className='board-form-name' name="name" placeholder="name" value={formData.name} onChange={handleChange}></input>
-            <input className='board-form-description' name="description" placeholder="description" value={formData.description} onChange={handleChange}></input>
-            
-            <button className='btn' onClick={formType === 'new' ? handleSave : handleUpdate}>save</button>
-            {formType === 'update' ? <button className='btn delete-board-btn' onClick={handleDelete}>delete</button> : ''}
+        <div className="flex-container flex-center">
+            <div className='board-form'>
+                <input className='board-form-name' name="name" placeholder="name" value={formData.name} onChange={handleChange}></input>
+                <input className='board-form-description' name="description" placeholder="description" value={formData.description} onChange={handleChange}></input>
+                
+                <button className='btn' onClick={formType === 'new' ? handleSave : handleUpdate}>save</button>
+                {formType === 'update' ? <button className='btn delete-board-btn' onClick={handleDelete}>delete</button> : ''}
+            </div>
         </div>
     )
 }

@@ -1,6 +1,8 @@
 import './BoardDetail.css'
 
-import {useState, useEffect} from 'react'
+import {useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+
 import * as boardAPI from '../../utilities/board-api'
 import ItemForm from '../ItemForm/ItemForm'
 import MetSearch from '../../pages/MetSearch/MetSearch'
@@ -9,9 +11,13 @@ import BoardForm from '../BoardForm/BoardForm'
 
 export default function BoardDetail({curBoard, user, boardFunctions}) {
     const [showComponets, setShowComponents] = useState('init')
+    const navigate = useNavigate()
 
     useEffect( function() {
         setShowComponents('init')
+        if (!curBoard) {
+            navigate('/boards');
+        }
     }, [curBoard])
     
     async function addItem(item) {
@@ -35,6 +41,8 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
     }
 
     return (
+        curBoard !== '' ?
+        <>
         <div className='board-detail'>
             <div className='board-detail-left'>
                 { showComponets !== 'edit'? 
@@ -84,5 +92,8 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
                 : '' }
             </div>
         </div>
+        </>
+        :
+        <></>
     )
 }

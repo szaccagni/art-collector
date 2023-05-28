@@ -84,6 +84,9 @@ body {
     text-decoration: none;
     color: var(--dark-grey);
     cursor: pointer;
+    background-color: transparent;
+    border: none;
+    /* font-size: calc(10px + 2vmin); */
 }
 
 .nav-link:hover {
