@@ -16,7 +16,8 @@ const userSchema = new Schema({
     password: {
       type: String,
       required: true
-    }
+    },
+    boards : { type: Number, default: 0 }
 }, {
     timestamps: true,
     toJSON: {

@@ -31,6 +31,7 @@ const boardSchema = new Schema({
         ref: 'User',
         required: true
     },
+    order : { type: Number }
 }, {
     timestamps: true
 })

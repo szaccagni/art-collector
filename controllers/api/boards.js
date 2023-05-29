@@ -1,4 +1,5 @@
 const Board = require('../../models/board')
+const User = require('../../models/user')
 
 module.exports = {
     create,
@@ -11,7 +12,10 @@ module.exports = {
 }
 
 async function create(req,res) {
+    const curUser = await User.findByIdAndUpdate(req.user._id,{ $inc: { boards: 1 } }, {new:true})
+    req.body.board.order = curUser.boards
     const board = await Board.create(req.body.board)
+    console.log(board)
     res.json(board)
 }
 
@@ -23,7 +27,7 @@ async function show(req, res) {
 async function index(req, res) {
     let boards = []
     if (req.user) {
-        boards = await Board.find({user: req.user._id})
+        boards = await Board.find({user: req.user._id}).sort({ order: 1 })
     }
     res.json(boards)  
 }
@@ -56,6 +60,7 @@ async function update(req, res) {
 
 async function deleteBoard(req,res) {
     try {
+        await User.findByIdAndUpdate(req.user._id,{ $inc: { boards: -1 } }, {new:true})
         await Board.deleteOne({_id: req.params.id})
         res.json('successful delete')
     } catch(err) {
