@@ -36,9 +36,13 @@ export default function BoardPage({user, boards, setActive, getBoards}) {
     }
     
     function showBoard(board) {
+        setBoardWithStrg(board)
+        navigate('/boards/detail')
+    }
+
+    function setBoardWithStrg(board) {
         setCurBoard(board)
         localStorage.setItem('curBoard', JSON.stringify(board));
-        navigate('/boards/detail')
     }
     
     async function updateBoard(board) {
@@ -67,6 +71,7 @@ export default function BoardPage({user, boards, setActive, getBoards}) {
         updateBoard: updateBoard,
         deleteBoard: deleteBoard,
         getOneBoard: getOneBoard,
+        setBoardWithStrg: setBoardWithStrg,
         // clearCurrentBoard: clearCurrentBoard
     }    
 

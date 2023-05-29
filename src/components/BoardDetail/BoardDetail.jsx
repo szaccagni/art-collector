@@ -12,11 +12,11 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
     const navigate = useNavigate()
 
     useEffect( function() {
-        console.log(curBoard)
-        setShowComponents('init')
+        // setShowComponents('init')
         if (!curBoard) {
             navigate('/boards/all');
         }
+        
     }, [curBoard])
     
     async function addItem(item) {
@@ -26,16 +26,18 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
     }
 
     async function quickAddItem(item) {
-        await boardAPI.addItem(curBoard._id, item)
+        // await boardAPI.addItem(curBoard._id, item)
+        const updatedBoard = await boardAPI.addItem(curBoard._id, item)
+        boardFunctions.setBoardWithStrg(updatedBoard)
     }
 
     async function removeItem(item) {
         const updatedBoard = await boardAPI.removeItem(item._id)
-        boardFunctions.showBoard(updatedBoard)
+        boardFunctions.setBoardWithStrg(updatedBoard)
     }
 
     async function reloadBoard() {
-        // boardFunctions.getOneBoard(curBoard._id)
+        boardFunctions.getOneBoard(curBoard._id)
         setShowComponents('init')
     }
 
