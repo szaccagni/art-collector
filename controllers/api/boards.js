@@ -27,7 +27,8 @@ async function show(req, res) {
 async function index(req, res) {
     let boards = []
     if (req.user) {
-        boards = await Board.find({user: req.user._id}).sort({ order: 1 })
+        // boards = await Board.find({user: req.user._id}).sort({ order: 1 })
+        boards = await Board.find({user: req.user._id})
     }
     res.json(boards)  
 }
