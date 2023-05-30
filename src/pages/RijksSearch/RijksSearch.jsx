@@ -6,11 +6,11 @@ import Pagination from '../../components/Pagination/Pagination'
 
 export default function RijksSearch({addItem, quickAddItem}) {
     const [search, setSearch] = useState('')
-    const [resultsPerPg, setResultsPerPg] = useState(20)
+    const [resultsPerPg, setResultsPerPg] = useState(20) // used for to calc total pgs in pagination
     const [curPg, setCurPg] = useState(1)
     const [curSearch, setCurSearch] = useState('')
     const [curData, setCurData] = useState([])
-    const [totalResults, setTotalResults] = useState(0)
+    const [totalResults, setTotalResults] = useState(0) // used for to calc total pgs in pagination
     const [noResults, setNoResults] = useState(false)
 
     async function handleSearch() {

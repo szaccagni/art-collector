@@ -5,14 +5,14 @@ import SearchResults from '../../components/SearchResults/SearchResults'
 import Pagination from '../../components/Pagination/Pagination'
 
 export default function MetSearch({addItem, quickAddItem}) {
-    const [resultsPerPg, setResultsPerPg] = useState(20)
+    const [resultsPerPg, setResultsPerPg] = useState(20) // used for to calc total pgs in pagination
     const [search, setSearch] = useState('')
     const [curSearch, setCurSearch] = useState('')
-    const [resultIDs, setResultIDs] = useState([])
+    const [resultIDs, setResultIDs] = useState([]) // needed for subsequent api call to get data
     const [curData, setCurData] = useState([])
     const [curPg, setCurPg] = useState(1)
     const [noResults, setNoResults] = useState(false)
-    const [resultsLen, setResultsLen] = useState(0)
+    const [resultsLen, setResultsLen] = useState(0) // used for to calc total pgs in pagination
 
 
     async function handleSearch() {
@@ -36,7 +36,7 @@ export default function MetSearch({addItem, quickAddItem}) {
 
     async function handleSearchResults(res) {
         if (res) {
-            const data = await metAPI.getArrDetails(res, 1, resultsPerPg)
+            const data = await metAPI.getArrDetails(res, 1, resultsPerPg) // objIDs, curPg, resultsPerPg
             setResultIDs(data.objectIDs)
             setResultsLen(data.objectIDs.length)
             setCurData(data.results)
@@ -48,7 +48,7 @@ export default function MetSearch({addItem, quickAddItem}) {
 
     async function handlePageTurn(num) {
         setCurData([])
-        const data = await metAPI.getArrDetails(resultIDs, num, resultsPerPg)
+        const data = await metAPI.getArrDetails(resultIDs, num, resultsPerPg) // objIDs, curPg, resultsPerPg
         setResultIDs(data.objectIDs)
         setResultsLen(data.objectIDs.length)
         setCurData(data.results)
