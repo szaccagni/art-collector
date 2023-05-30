@@ -25,6 +25,7 @@ async function search(req, res) {
     let response = await fetch(endpoint).then((res) => res.json());
     const curData = response.artObjects.map( art => {
         const formatData = {
+            // formating to match the met api call results 
             objectID: art.objectNumber,
             title: art.title,
             primaryImage: art.webImage.url,
