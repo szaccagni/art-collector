@@ -5,7 +5,8 @@ const User = require('../../models/user')
 module.exports = {
     create,
     login,
-    checkToken
+    checkToken,
+    checkEmail
 }
 
 async function create(req, res) {
@@ -34,6 +35,14 @@ async function login(req, res) {
 function checkToken(req, res) {
     console.log('req.user', req.user)
     res.json(req.exp)
+}
+
+async function checkEmail(req, res) {
+    const validationData = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=c113a75a9a984d1b8f33626eab9b50ec&email=${req.params.email}`)
+    const data = await validationData.json()
+    const is_valid = data.is_valid_format.value
+    console.log(is_valid)
+    res.json(is_valid)
 }
 
 /*-- Helper Functions --*/

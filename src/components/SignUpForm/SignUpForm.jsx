@@ -1,6 +1,7 @@
 import '../../pages/AuthPage/AuthPage.css'
 import { Component } from 'react'
 import { signUp } from '../../utilities/users-service'
+import * as usersAPI from '../../utilities/users-api'
 
 export default class SignUpForm extends Component {
   state = {
@@ -19,7 +20,14 @@ export default class SignUpForm extends Component {
   }
 
   handleSubmit = async (evt) => {
-      evt.preventDefault();
+
+    evt.preventDefault();
+
+    const email = this.state.email
+      
+    const valid = await usersAPI.checkEmail(email)
+
+    if (valid) {
       try {
         const formData = {
           name: this.state.name,
@@ -31,6 +39,9 @@ export default class SignUpForm extends Component {
       } catch {
         this.setState({ error: 'Sign Up Failed - Try Again' })
       }
+    } else {
+      this.setState({ error: 'Sign Up Failed - Email Incorrect Format' })
+    }
   } 
 
   render() {
