@@ -38,10 +38,9 @@ function checkToken(req, res) {
 }
 
 async function checkEmail(req, res) {
-    const validationData = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=c113a75a9a984d1b8f33626eab9b50ec&email=${req.params.email}`)
+    const validationData = await fetch(`https://emailvalidation.abstractapi.com/v1/?api_key=${process.env.ABSTRACT_KEY}&email=${req.params.email}`)
     const data = await validationData.json()
     const is_valid = data.is_valid_format.value
-    console.log(is_valid)
     res.json(is_valid)
 }
 

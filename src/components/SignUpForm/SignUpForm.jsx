@@ -20,11 +20,8 @@ export default class SignUpForm extends Component {
   }
 
   handleSubmit = async (evt) => {
-
     evt.preventDefault();
-
     const email = this.state.email
-      
     const valid = await usersAPI.checkEmail(email)
 
     if (valid) {
