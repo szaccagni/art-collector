@@ -1,7 +1,14 @@
 import { Link, useNavigate } from 'react-router-dom'
 import * as userService from '../../utilities/users-service' 
+import {useState} from 'react'
+import { Dialog } from '@mui/material'
+import LoginForm from '../../components/LoginForm/LoginForm'
+import SignUpForm from '../../components/SignUpForm/SignUpForm'
 
 export default function NavBar({ user, setUser, active, setActive, getBoards}) {
+    const [loginModalOpen, setLoginModalOpen] = useState(false)
+    const [signUpModalOpen, setSignUpModalOpen] = useState(false)
+
     const activeStyle = {
         textDecoration: 'underline',
         color: 'var(--dark-green)',
@@ -24,19 +31,38 @@ export default function NavBar({ user, setUser, active, setActive, getBoards}) {
     }
 
     return (
-        <nav className="NavBar">
-            <div className='welcome'><div>Welcome, {user.name}</div></div>
-            <div>
+        <>
+            <nav className="NavBar">
+                {user ? 
+                <>
+                <div className='welcome'><div>Welcome, {user.name}</div></div>
                 <div>
-                    <button onClick={() => handleClick('all')} className='nav-link'  
-                        style={ active === 'all' ?  activeStyle : {} }>Boards</button>
+                    <div>
+                        <button onClick={() => handleClick('all')} className='nav-link'  
+                            style={ active === 'all' ?  activeStyle : {} }>Boards</button>
+                    </div>
+                    <div>
+                        <button onClick={() => handleClick('new')} className='nav-link'
+                            style={ active === 'new' ? activeStyle : {} }>New Board</button>
+                    </div>
+                    <div>
+                    <button onClick={handleLogOut} className='nav-link'>Log Out</button>
+                    </div>
                 </div>
-                <div>
-                    <button onClick={() => handleClick('new')} className='nav-link'
-                        style={ active === 'new' ? activeStyle : {} }>New Board</button>
+                </>
+                :
+                <div style={{display: 'flex', justifyContent: 'right', width: '100%'}}>
+                    <div><Link to="" onClick={() => setLoginModalOpen(true)} className='nav-link'>Log In</Link></div>
+                    <div><Link to="" onClick={() => setSignUpModalOpen(true)} className='nav-link'>Sign Up</Link></div>
                 </div>
-                <div><Link to="" onClick={handleLogOut} className='nav-link'>Log Out</Link></div>
-            </div>
-        </nav>
+            }
+            </nav>
+            <Dialog onClose={() => setLoginModalOpen(false)} open={loginModalOpen}>
+                <LoginForm setUser={setUser} setLoginModalOpen={setLoginModalOpen}/>
+            </Dialog>
+            <Dialog onClose={() => setSignUpModalOpen(false)} open={signUpModalOpen}>
+                <SignUpForm setUser={setUser} setSignUpModalOpen={setSignUpModalOpen}/>
+            </Dialog>
+        </>
     )
 }

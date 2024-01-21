@@ -13,7 +13,7 @@ export default function App() {
   
 
   useEffect( function () {
-    getBoards()
+    getBoards().catch(err => console.log('error loading boards: ', err))
   }, [user])
 
   async function getBoards() {
@@ -23,12 +23,10 @@ export default function App() {
 
   return (
     <main className="App">
+      <NavBar user={user} setUser={setUser} active={active} setActive={setActive} getBoards={getBoards}/>
       {
-        user ?
-        <>
-          <NavBar user={user} setUser={setUser} active={active} setActive={setActive} getBoards={getBoards}/>
-          <BoardPage user={user} boards={boards} setActive={setActive} getBoards={getBoards}/>
-        </>
+        user ? 
+        <BoardPage user={user} boards={boards} setActive={setActive} getBoards={getBoards}/>
         :
         <AuthPage setUser={setUser} />
       }
