@@ -1,7 +1,7 @@
 import './BoardForm.css'
 import {useState} from 'react'
 
-export default function BoardForm({user, board, boardFunctions}) {
+export default function BoardForm({user, board, boardFunctions, setShowComponents}) {
     const [formData, setFormData] = useState(board)   
     const formType = board.name !== '' ? 'update' : 'new' 
 
@@ -25,6 +25,7 @@ export default function BoardForm({user, board, boardFunctions}) {
 
     function handleUpdate() {
         boardFunctions.updateBoard(formData)
+        setShowComponents('init')
     }
 
     function handleDelete() {

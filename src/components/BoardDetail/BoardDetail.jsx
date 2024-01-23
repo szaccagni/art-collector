@@ -52,10 +52,10 @@ export default function BoardDetail({curBoard, user, boardFunctions}) {
                         <div className='board-detail-description'>{curBoard.description}</div>
                     </div>
                 : ''}
-                { showComponets === 'edit' ? <div className='adjust'><BoardForm user={user} board={curBoard} boardFunctions={boardFunctions}/></div>: ''}
+                { showComponets === 'edit' ? <div className='adjust'><BoardForm user={user} board={curBoard} boardFunctions={boardFunctions} setShowComponents={setShowComponents}/></div>: ''}
                 { showComponets === 'init' ? 
                     <div className='editBtns'>
-                        <a onClick={() => setShowComponents('edit')}>Edit</a>
+                        <a onClick={() => setShowComponents('edit')}>Edit Board Details</a>
                         <a onClick={() => setShowComponents('buttons')}>Add to Collection</a>
                         <a onClick={() => setShowComponents('remove')}>Remove from Collection</a>
                     </div>
