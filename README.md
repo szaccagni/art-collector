@@ -4,8 +4,9 @@ This web app allows you to stretch your creative muscles and try your hand at cu
 [Click Here to Curate](https://art-collector.herokuapp.com/)
 
 # Pending Features and Updates (include but are not limited to)
-* Guest login option
+* Guest login option, will require adding context state to the application
 * Improve mobile experience 
+* Improving accessibility features with in code
 * Integrate MUI throughout the front end code 
 * Display an indicator on the images that have already been added to the current board while searching for new ones
 * Allow users to rerarrange the order of their boards
